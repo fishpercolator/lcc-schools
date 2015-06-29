@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Schools</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>
+    Leeds School Admissions
+  </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= yield :head %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body class="noscript">
+<script type="application/javascript">
+  $('body').removeClass('noscript')
+</script>
+<header>
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="nav-links">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <span class="navbar-brand">
+            <%= link_to root_path do %>Leeds School Admissions<% end %>
+            <span class="beta badge">Beta</span>
+          </span>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar">
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<article class="container-fluid">
+  <%= yield %>
+</article>
+
+<footer class="navbar navbar-inverse">
+  <p>© Zephyros Systems Limited 2015</p>
+</footer>
 
 </body>
+
 </html>

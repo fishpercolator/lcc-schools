@@ -1,0 +1,46 @@
+@import "colours";
+$lr-margin: 15px;
+
+.noscript .if-no-js-hide {
+  display: none;
+}
+
+header {
+  a {
+    color: white;
+    &:hover { color: white; }
+  }
+  .beta.badge {
+    background-color: orange;
+  }
+}
+
+nav {
+  &.navbar-inverse a.navbar-brand {
+    color: $header-footer-foreground;
+  }
+
+  .navbar-nav {
+    float: right;
+    @media (max-width: $screen-xs-max) {
+      // Stop floating right when we're a hamburger
+      float: none;
+    }
+  }
+
+}
+
+article {
+  .page-header {
+    margin-top: 0;
+    h1 {
+      margin-top: 0;
+    }
+  }
+}
+
+footer {
+  color: $header-footer-foreground;
+  padding: 1em $lr-margin 0em $lr-margin;
+  border-radius: 0;
+}

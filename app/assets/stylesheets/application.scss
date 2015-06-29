@@ -1,0 +1,10 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "leaflet";
+
+//= depend_on_asset "layers.png"
+//= depend_on_asset "layers-2x.png"
+
+@import "main";
+@import "leaflet.markercluster";
+@import "leaflet.markercluster.default";
