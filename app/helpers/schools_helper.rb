@@ -13,4 +13,8 @@ module SchoolsHelper
                            }
                          ))
   end
+
+  def home_json(home_lonlat)
+    RGeo::GeoJSON.encode(RGeo::GeoJSON::EntityFactory.instance.feature(home_lonlat, nil)).to_json.html_safe
+  end
 end

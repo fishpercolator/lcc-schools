@@ -46,6 +46,17 @@ class @FeatureMap
 
   layerBySchoolCode: (schoolCode) -> @layersBySchoolCode[schoolCode]
 
+  HouseIcon = L.Icon.extend({ options: {
+    shadowUrl:       '/assets/House-shadow.png',
+    shadowRetinaUrl: '/assets/House-shadow2x.png',
+    iconUrl:         '/assets/House.png',
+    iconRetinaUrl:   '/assets/House2x.png',
+    iconSize:     [30, 30], # size of the icon
+    shadowSize:   [45, 25], # size of the icon
+    iconAnchor:   [12, 30], # point of the icon which will correspond to marker's location
+    shadowAnchor: [12, 26], # point of the icon which will correspond to marker's location
+  }})
+
   draw: ->
     @map = L.map('map', {
       center: OVER_LEEDS,
@@ -64,6 +75,12 @@ class @FeatureMap
         @layersBySchoolCode[feature.properties.code] = layer
         bindPopup(feature, layer)
     )
+
+    @homeLayer = L.geoJson(
+      homePoint,
+      pointToLayer: (feature, latlng) =>
+        L.marker(latlng, { icon: new HouseIcon() })
+    ).addTo(@map)
 
     baseLayers = {
       "OpenStreetMap": osmLayer
