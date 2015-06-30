@@ -1,0 +1,91 @@
+$base-cluster-size: 45px;
+$inner-offset: $base-cluster-size / 8;
+
+#map {
+  width: 100%;
+  border: 1px solid #CCC;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+
+  // Not really collapsing, but this copies the transition settings from
+  // Bootstrap's collapse component
+  @extend .collapsing;
+
+  path.highlight {
+    stroke: $map-site-highlight;
+    stroke-opacity: 1.0;
+    stroke-width: 4px;
+  }
+
+  .leaflet-marker-icon.highlight {
+    box-shadow: 1px 1px 6px 6px $map-site-highlight;
+    border-radius: 999px;
+  }
+
+  // On medium/higher devices, also expand the map
+  &.expanded {
+    @media (min-width: $screen-md-min) {
+      height: 600px;
+    }
+  }
+}
+
+.cluster {
+  top: -$base-cluster-size / 2 + $inner-offset;
+  left: -$base-cluster-size / 2 + $inner-offset;
+
+  background-color: $cluster-colour;
+  opacity: 0.85 !important;
+
+  min-width:  $base-cluster-size;
+  min-height: $base-cluster-size;
+  border-radius: 50%;
+
+  .cluster-inner {
+    position: relative;
+    color: white;
+    border: $inner-offset / 2 solid white;
+    border-radius: 50%;
+    margin-left: auto; margin-right: auto;
+    margin-top: $inner-offset / 2.5;
+    min-height: $base-cluster-size - $inner-offset;
+    max-width: $base-cluster-size - $inner-offset;
+    .cluster-count {
+      position: absolute;
+      font-weight: bold;
+      min-width: 100%;
+      min-height: 100%;
+      line-height: 100%;
+      text-align: center;
+      padding-top: $base-cluster-size / 4.2;
+    }
+  }
+}
+
+.leaflet-popup-content {
+  min-height: 12em;
+  h3 {
+    font-size: 1.2em;
+    margin: 0;
+
+    a {
+      display: inline-block;
+      width: 85%;
+      float: left;
+    }
+
+    .score {
+      width: 30px;
+      float: right;
+    }
+  }
+
+  dl {
+    height: 1.2em;
+    clear: both;
+    padding-top: 0.5em;
+  }
+}

@@ -11,5 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require leaflet
+//= require leaflet.markercluster
 //= require jquery_ujs
 //= require_tree .

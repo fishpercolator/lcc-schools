@@ -1,0 +1,46 @@
+<%= content_for :head do %>
+  <link rel="alternate"
+        type="application/vnd.geo+json"
+        href="<%= schools_results_path.sub(/results(\?)?/, 'results.geojson\1') %>">
+<% end %>
+
+<h1>Your results</h1>
+
+<h4>Schools close to 71 Red Hall Lane, Leeds LS17 8NA</h4>
+
+<div id="map">
+
+</div>
+
+<table class="schools table table-striped">
+  <thead>
+  <tr>
+    <th class="name">Name</th>
+    <th>Address</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @schools.each_with_index do |school, index| %>
+    <tr class="school" data-school-code="<%= school.code %>">
+      <td class="school-name">
+        <span>
+          <%= link_to school.name, school %>
+        </span>
+      </td>
+      <td><%= link_to school.address, school %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Next steps</h2>
+<div class="control-group pull-right">
+  <a href="#" class="btn btn-success">Compare these schools in more detail</a>
+  <br/>
+  <small class="pull-right"></small>
+  <br/>
+  <a href="#" class="btn btn-danger">Apply to these schools at Schools Online </a>
+  <br/>
+  <small class="pull-right">(you will leave this site)</small>
+</div>

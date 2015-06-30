@@ -1,0 +1,19 @@
+<h1>Apply for a school place</h1>
+
+<h2>Where do you live?</h2>
+
+<form>
+  <div class="form-group">
+    <label for="postcode">Postcode</label>
+    <input type="text" class="form-control" id="postcode" placeholder="Postcode">
+  </div>
+  <div class="form-group">
+    <label for="house_number_name">House name or number</label>
+    <input type="text" class="form-control" id="house_number_name" placeholder="House name or number">
+  </div>
+
+  <div class="control-group">
+    <%= link_to 'Which schools could I apply to?', schools_results_path, class: 'btn btn-primary pull-right' %>
+  </div>
+</form>
+

@@ -35,9 +35,9 @@ module Schools
 
           point_wkt = "POINT(#{row['X_REF']} #{row['Y_REF']})"
           sql = <<-SQL
-              UPDATE schools
-              SET centroid = ST_Transform(ST_GeomFromText('#{point_wkt}', 27700), 4326)
-              WHERE code='#{row['SchoolCode']}'
+            UPDATE schools
+            SET centroid = ST_Transform(ST_GeomFromText('#{point_wkt}', 27700), 4326)
+            WHERE code='#{row['SchoolCode']}'
           SQL
           begin
             School.connection.execute(sql)
