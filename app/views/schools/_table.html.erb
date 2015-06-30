@@ -1,0 +1,23 @@
+<table class="schools table table-striped">
+  <thead>
+  <tr>
+    <th class="zoom"></th>
+    <th class="name">Name</th>
+    <th>Address</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @schools.each do |school| %>
+    <tr class="school" data-school-code="<%= school.code %>">
+      <td class="zoom"><a href= '#' data-school-code="<%= school.code %>"><span class="glyphicon glyphicon-screenshot" /></a></td>
+      <td class="school-name">
+        <span>
+          <%= link_to school.name, school %>
+        </span>
+      </td>
+      <td><%= link_to school.address, school %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

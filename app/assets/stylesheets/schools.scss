@@ -5,3 +5,34 @@
 .control-group {
   margin-bottom: 2em;
 }
+
+table.schools {
+  .school {
+    .zoom {
+      padding-right: 0
+    }
+  }
+}
+
+$padding-dl-and-reason: 1%;
+
+.school, .leaflet-popup-content {
+  dl {
+    padding: $padding-dl-and-reason;
+
+    dt {
+      line-height: 1.5em;
+      font-weight: bold;
+      display: inline-block;
+      clear: left;
+      float: left;
+    }
+
+    dd {
+      float: right;
+    }
+  }
+  &.highlighted {
+    background-color: $row-site-highlight !important;
+  }
+}

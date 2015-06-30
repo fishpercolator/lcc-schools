@@ -20,7 +20,7 @@ class @FeatureMap
     school = feature.properties # for readability in the template
     layer.bindPopup("""
       <h3>
-        <a href="/schools/#{school.code}">#{school.code} #{school.name}</a>
+        <a href="/schools/#{school.code}">#{school.name}</a>
       </h3>
       <dl>
         <dt>Number of pupils</dt>
@@ -41,6 +41,11 @@ class @FeatureMap
       @map.fitBounds(markerBounds, options) if markerBounds? and markerBounds.isValid()
     ), 50
 
+  getMap: =>
+    @map
+
+  layerBySchoolCode: (schoolCode) -> @layersBySchoolCode[schoolCode]
+
   draw: ->
     @map = L.map('map', {
       center: OVER_LEEDS,
@@ -52,10 +57,11 @@ class @FeatureMap
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(@map)
 
-    @layersByShlaaRef = {}
+    @layersBySchoolCode = {}
     @featureLayer = L.geoJson(
       @data_feature,
       onEachFeature: (feature, layer) =>
+        @layersBySchoolCode[feature.properties.code] = layer
         bindPopup(feature, layer)
     )
 

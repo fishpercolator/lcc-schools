@@ -33,6 +33,10 @@ $inner-offset: $base-cluster-size / 8;
   }
 }
 
+.zoom {
+  a, a:visited { color: black };
+}
+
 .cluster {
   top: -$base-cluster-size / 2 + $inner-offset;
   left: -$base-cluster-size / 2 + $inner-offset;
@@ -66,7 +70,7 @@ $inner-offset: $base-cluster-size / 8;
 }
 
 .leaflet-popup-content {
-  min-height: 12em;
+  min-height: 7em;
   h3 {
     font-size: 1.2em;
     margin: 0;

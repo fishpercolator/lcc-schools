@@ -18,3 +18,5 @@ jQuery ->
             fitMapToBounds: true
           }
         )
+
+        new SchoolHighlighter(window.map)

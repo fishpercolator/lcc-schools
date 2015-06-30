@@ -12,27 +12,7 @@
 
 </div>
 
-<table class="schools table table-striped">
-  <thead>
-  <tr>
-    <th class="name">Name</th>
-    <th>Address</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @schools.each_with_index do |school, index| %>
-    <tr class="school" data-school-code="<%= school.code %>">
-      <td class="school-name">
-        <span>
-          <%= link_to school.name, school %>
-        </span>
-      </td>
-      <td><%= link_to school.address, school %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render 'table' %>
 
 <h2>Next steps</h2>
 <div class="control-group pull-right">
