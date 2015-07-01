@@ -10,6 +10,8 @@ module SchoolsHelper
                              number_of_pupils: school.number_of_pupils,
                              available_places: school.available_places,
                              number_of_admissions: school.number_of_admissions,
+                             nearest: school.nearest,
+                             non_nearest: school.non_nearest
                            }
                          ))
   end

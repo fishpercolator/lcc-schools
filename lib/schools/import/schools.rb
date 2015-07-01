@@ -23,6 +23,8 @@ module Schools
             school.website = row['Website']
             school.ofsted_report = 'http://some.ofsted.report/'
             school.available_places = row['NumberOfPlacesAvailable']
+            school.nearest = row['Nearest']
+            school.non_nearest = row['Non Nearest']
 
             match = row['Allocated'] && row['Allocated'].match(ALLOCATED_NUMBERS)
             if match

@@ -12,6 +12,7 @@ class @FeatureMap
   DEFAULT_OPTIONS = {
     fitMapToBounds: true
   }
+  MILES_TO_METRES = 1609.344
 
   constructor: (@data_feature, @options = DEFAULT_OPTIONS) ->
     @draw()
@@ -82,19 +83,33 @@ class @FeatureMap
         L.marker(latlng, { icon: new HouseIcon() })
     ).addTo(@map)
 
+    @nearestLayers = []
+
+    nearestCircle = (feature) ->
+      L.circle(
+        feature.geometry.coordinates.reverse(),
+        feature.properties.nearest * MILES_TO_METRES
+      )
+
+    @nearestLayers.push(nearestCircle(feature)) \
+      for feature in @data_feature.features \
+      when feature.properties.nearest?
+
+    @nearestGroup = L.featureGroup(@nearestLayers)
+
+
     baseLayers = {
       "OpenStreetMap": osmLayer
     }
 
     overlays = {
       "Show schools": @featureLayer,
+      "Show last year's nearest admissions": @nearestGroup,
       "Show last year's cutoff areas": []
-
     }
 
     L.control.layers(baseLayers, overlays).addTo(@map)
 
-#    @markers.addLayer(@featureLayer)
     @featureLayer.addTo(@map);
 
     if @options.fitMapToBounds
