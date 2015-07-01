@@ -58,6 +58,14 @@ class @FeatureMap
     shadowAnchor: [12, 26], # point of the icon which will correspond to marker's location
   }})
 
+  nearestCircle = (feature, radiusPropName, options) ->
+    coords = feature.geometry.coordinates
+    L.circle(
+      [coords[1],coords[0]],
+      feature.properties[radiusPropName] * MILES_TO_METRES,
+      { opacity: 0.3, color: options.color }
+    )
+
   draw: ->
     @map = L.map('map', {
       center: OVER_LEEDS,
@@ -79,24 +87,23 @@ class @FeatureMap
 
     @homeLayer = L.geoJson(
       homePoint,
-      pointToLayer: (feature, latlng) =>
-        L.marker(latlng, { icon: new HouseIcon() })
+      pointToLayer: (feature, latlng) => L.marker(latlng, { icon: new HouseIcon() })
     ).addTo(@map)
 
-    @nearestLayers = []
+    @nearestLayers    = []
+    @nonNearestLayers = []
 
-    nearestCircle = (feature) ->
-      L.circle(
-        feature.geometry.coordinates.reverse(),
-        feature.properties.nearest * MILES_TO_METRES
-      )
-
-    @nearestLayers.push(nearestCircle(feature)) \
+    @nearestLayers.push(nearestCircle(feature, 'nearest', {color: '#22F'})) \
       for feature in @data_feature.features \
       when feature.properties.nearest?
 
     @nearestGroup = L.featureGroup(@nearestLayers)
 
+    @nonNearestLayers.push(nearestCircle(feature, 'non_nearest', {color: '#F22'})) \
+      for feature in @data_feature.features \
+      when feature.properties.non_nearest?
+
+    @nonNearestGroup = L.featureGroup(@nonNearestLayers)
 
     baseLayers = {
       "OpenStreetMap": osmLayer
@@ -104,8 +111,8 @@ class @FeatureMap
 
     overlays = {
       "Show schools": @featureLayer,
-      "Show last year's nearest admissions": @nearestGroup,
-      "Show last year's cutoff areas": []
+      "Who got in when it was their nearest school?":    @nearestGroup,
+      "Who got in when it wasn't their nearest school?": @nonNearestGroup
     }
 
     L.control.layers(baseLayers, overlays).addTo(@map)
