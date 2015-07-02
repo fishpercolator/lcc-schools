@@ -66,6 +66,21 @@ class @FeatureMap
       { opacity: 0.3, color: options.color }
     )
 
+  getMarkerForFeature = (feature, latlng) ->
+    if feature.properties.own_admission_policy
+      L.marker(
+        latlng,
+        {
+          icon: L.icon({
+            iconUrl: '/assets/own-admission-policy.png',
+            iconRetinaUrl: '/assets/own-admission-policy2x.png',
+            iconSize: [25, 41]
+          })
+        }
+      )
+    else
+      L.marker(latlng)
+
   draw: ->
     @map = L.map('map', {
       center: OVER_LEEDS,
@@ -80,10 +95,13 @@ class @FeatureMap
     @layersBySchoolCode = {}
     @featureLayer = L.geoJson(
       @data_feature,
-      onEachFeature: (feature, layer) =>
-        @layersBySchoolCode[feature.properties.code] = layer
-        bindPopup(feature, layer)
-    )
+      {
+        onEachFeature: (feature, layer) =>
+          @layersBySchoolCode[feature.properties.code] = layer
+          bindPopup(feature, layer)
+        pointToLayer: (feature, latlng) => getMarkerForFeature(feature, latlng)
+      }
+    ).addTo(@map)
 
     @homeLayer = L.geoJson(
       homePoint,
@@ -116,8 +134,6 @@ class @FeatureMap
     }
 
     L.control.layers(baseLayers, overlays).addTo(@map)
-
-    @featureLayer.addTo(@map);
 
     if @options.fitMapToBounds
       @fitBounds()

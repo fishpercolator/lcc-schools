@@ -11,7 +11,8 @@ module SchoolsHelper
                              available_places: school.available_places,
                              number_of_admissions: school.number_of_admissions,
                              nearest: school.nearest,
-                             non_nearest: school.non_nearest
+                             non_nearest: school.non_nearest,
+                             own_admission_policy: school.own_admission_policy?
                            }
                          ))
   end
