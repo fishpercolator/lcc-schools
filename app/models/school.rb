@@ -7,4 +7,8 @@ class School < ActiveRecord::Base
   def address
     "#{address1} #{postcode}"
   end
+
+  def own_admission_policy?
+    !!(name =~ /voluntary/i)
+  end
 end
