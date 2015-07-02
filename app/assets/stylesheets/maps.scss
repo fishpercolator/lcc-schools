@@ -93,3 +93,22 @@ $inner-offset: $base-cluster-size / 8;
     padding-top: 0.5em;
   }
 }
+
+ul.marker-key {
+  padding: 0;
+  font-size: 0.85em;
+  float: right;
+  text-align: center;
+  line-height: 25px;
+
+  li {
+    background-size: 17px 27px;
+    display: inline;
+    padding: 4px 0 10px 23px;
+    background-repeat: no-repeat;
+  }
+
+  .community-school     { background-image: url(asset-path('marker-icon.png')) ; }
+  .own-admission-policy { background-image: url(asset-path('own-admission-policy.png')) ; }
+}
+

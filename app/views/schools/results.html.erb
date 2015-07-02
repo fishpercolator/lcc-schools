@@ -9,6 +9,7 @@
 <h4>Schools close to 71 Red Hall Lane, Leeds LS17 8NA</h4>
 
 <div id="map"></div>
+<%= render 'marker_key' %>
 
 <%= render 'table' %>
 
@@ -22,6 +23,7 @@
   <br/>
   <small class="pull-right">(you will leave this site)</small>
 </div>
+
 
 <script type="application/javascript">
   var homePoint = <%= home_json(@home) %>
