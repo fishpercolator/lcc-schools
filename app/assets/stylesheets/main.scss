@@ -37,10 +37,15 @@ article {
       margin-top: 0;
     }
   }
+
+  .choose a:hover {
+    text-decoration: none;
+  }
 }
 
 footer {
   color: $header-footer-foreground;
   padding: 1em $lr-margin 0em $lr-margin;
   border-radius: 0;
+  margin-top: 2em;
 }

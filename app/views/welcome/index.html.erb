@@ -1,17 +1,21 @@
 <h1>What do you need?</h1>
 
-<%= link_to schools_apply_path do %>
-  <div class="jumbotron">
-    <h1>I want to apply for a school place</h1>
+<div class="choose">
+  <%= link_to schools_apply_path do %>
+    <div class="jumbotron">
+      <h1>I want to apply for a school place</h1>
+    </div>
+  <% end %>
 
-    <p>...</p>
-  </div>
-<% end %>
+  <%= link_to schools_appeal_path do %>
+    <div class="jumbotron">
+      <h1>I want to appeal a decision</h1>
+    </div>
+  <% end %>
 
-<a href="#">
-  <div class="jumbotron">
-    <h1>I want to appeal a decision</h1>
-
-    <p>...</p>
-  </div>
-</a>
+  <%= link_to schools_path do %>
+    <div class="jumbotron">
+      <h1>I just want to explore schools</h1>
+    </div>
+  <% end %>
+</div>
