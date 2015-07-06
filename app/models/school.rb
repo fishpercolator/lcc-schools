@@ -10,7 +10,7 @@ class School < ActiveRecord::Base
   }
 
   scope :phase, -> (phase) {
-    where("schools.phase ~* ?", [phase])
+    where("schools.phase ~* ? OR schools.phase ~* 'through'", [phase])
   }
 
   scope :nearest_to, -> (point) {
