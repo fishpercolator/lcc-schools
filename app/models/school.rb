@@ -1,4 +1,14 @@
 class School < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :containing_text, against: {
+    code: 'A',
+    name: 'A',
+    address1: 'A',
+    address2: 'A',
+    address3: 'A',
+    postcode: 'B'
+  }
+
   scope :nearest_to, -> (point) {
     select("schools.*, ST_Distance(schools.centroid,'SRID=4326;POINT(#{point.lon} #{point.lat})'::geometry) AS distance").
     order("schools.centroid <->'SRID=4326;POINT(#{point.lon} #{point.lat})'::geometry")

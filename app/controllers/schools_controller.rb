@@ -9,6 +9,8 @@ class SchoolsController < ApplicationController
     end
   end
 
+  has_scope :containing_text
+
   def apply
   end
 

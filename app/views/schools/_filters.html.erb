@@ -1,7 +1,7 @@
 <div id="filters-container">
   <div class="filters well well-lg col-lg-12" aria-expanded="true" id="filters-panel">
     <div class="filter-type">
-      <label class="filter-type-heading">School type</label>
+      <label class="filter-type-heading">Admissions Policy</label>
 
       <div class="btn-group school-type" role="group" aria-label="School type">
         <div class="btn-group" role="group">
@@ -16,5 +16,19 @@
       </div>
     </div>
 
+    <div class="filter-type">
+      <%= form_tag(schools_path, method: 'get', role: 'form') do %>
+        <%= hidden_field_tag(:admissions_policy, params[:admissions_policy]) %>
+
+        <label class="filter-type-heading" for="containing_text">Containing text</label>
+
+        <div class="input-group">
+          <%= text_field_tag 'containing_text', params[:containing_text], class: 'form-control', placeholder: 'Containing...' %>
+          <span class="input-group-btn">
+          <%= button_tag 'Search', name: nil, class: 'btn btn-default' %>
+        </span>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
