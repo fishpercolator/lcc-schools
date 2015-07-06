@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   get 'schools/apply', to: 'schools#apply'
   get 'schools/results', to: 'schools#results'
+  get 'schools/compare', to: 'schools#compare'
+  get 'schools/appeal', to: 'schools#appeal'
+
   resources :schools, only: [:index, :show]
 
   # Example of regular route:

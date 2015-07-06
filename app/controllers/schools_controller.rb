@@ -15,6 +15,12 @@ class SchoolsController < ApplicationController
   def apply
   end
 
+  def appeal
+  end
+
+  def compare
+  end
+
   def home_point
     [-1.4715568, 53.840504]
   end
