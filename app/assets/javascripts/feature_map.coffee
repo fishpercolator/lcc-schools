@@ -28,8 +28,15 @@ class @FeatureMap
         <dd>#{school.number_of_pupils}</dd>
         <dt>Available places</dt>
         <dd>#{school.available_places}</dd>
-        <dt>Number of admissions</dt>
-        <dd>#{school.number_of_admissions}</dd>
+        #{
+          if school.number_of_admissions
+            """
+              <dt>Number of admissions</dt>
+              <dd>#{school.number_of_admissions}</dd>
+            """
+          else
+           ""
+        }
       </dl>
     """, { minWidth: 200, schoolCode: school.code} )
 
