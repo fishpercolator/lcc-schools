@@ -46,16 +46,16 @@ module SchoolsHelper
 
   end
 
-  def contention_for(school)
+  def contention_for(school, options = {})
     case
     when school.not_all_nearest
-      content_tag :span, 'Not all nearest allocated', class: 'badge badge-contention-high'
+      content_tag :span, 'Not all nearest allocated', class: "badge badge-contention-high #{options[:class]}"
     when school.contended?
-      content_tag :span, 'Oversubscribed',            class: 'badge badge-contention-medium'
+      content_tag :span, 'Oversubscribed',            class: "badge badge-contention-medium #{options[:class]}"
     when school.own_admission_policy?
-      content_tag :span, 'Unknown',                   class: 'badge badge-contention-unknown'
+      content_tag :span, 'Unknown',                   class: "badge badge-contention-unknown #{options[:class]}"
     else
-      content_tag :span, 'Availability',              class: 'badge badge-contention-low'
+      content_tag :span, 'Availability',              class: "badge badge-contention-low #{options[:class]}"
     end
   end
 end
