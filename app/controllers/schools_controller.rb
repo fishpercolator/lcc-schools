@@ -8,7 +8,11 @@ class SchoolsController < ApplicationController
 
   def results
     @home = RGeo::Geographic.spherical_factory.point(*home_point)
-    @schools = School.where(phase: 'Primary').nearest_to(@home).limit(5)
+    community_schools = School.community.where(phase: 'Primary').nearest_to(@home).limit(5)
+    own_admission_policy_schools =
+      School.own_admissions_policy.where(phase: 'Primary').nearest_to(@home).limit(5)
+
+    @schools = community_schools + own_admission_policy_schools
 
     respond_to do |format|
       format.html    { render }
