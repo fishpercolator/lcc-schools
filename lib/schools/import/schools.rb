@@ -33,6 +33,7 @@ module Schools
             school.priority5 = row['Priority 5']
             school.from_age = row['AgeRangeMinimum']
             school.to_age = row['AgeRangeMaximum']
+            school.not_all_nearest = !!(row['Notes'] =~ /Not all nearest allocated/)
 
             match = row['Allocated'] && row['Allocated'].match(ALLOCATED_NUMBERS)
             if match
