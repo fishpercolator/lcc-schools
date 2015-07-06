@@ -141,5 +141,7 @@ class @FeatureMap
 
     L.control.layers(null, overlays).addTo(@map)
 
+    L.control.scale().addTo(@map)
+
     if @options.fitMapToBounds
       @fitBounds()
