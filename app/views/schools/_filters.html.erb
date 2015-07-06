@@ -27,10 +27,11 @@
 
       <div class="btn-group school-type" role="group" aria-label="School type">
         <div class="btn-group" role="group">
-          <%= school_filter_link 'Community', :admissions_policy, 'community'  %>
+          <%= school_filter_link 'Community', :admissions_policy, 'community', glyphs: 'community'  %>
         </div>
         <div class="btn-group" role="group">
-          <%= school_filter_link 'Own Admissions Policy', :admissions_policy, 'own_admissions_policy'  %>
+          <%= school_filter_link 'Own', :admissions_policy, 'own_admissions_policy',
+                                 glyphs: 'own-admissions-policy' %>
         </div>
         <div class="btn-group" role="group">
           <%= school_filter_link 'All', :admissions_policy, :all%>

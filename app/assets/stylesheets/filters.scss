@@ -32,6 +32,18 @@
   }
 }
 
+.image-glyph {
+  min-width: 16px;
+  min-height: 16px;
+  vertical-align: middle;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 10px 15px;
+
+  &.own-admissions-policy { background-image: url(asset_path('own-admission-policy.png')); }
+  &.community             { background-image: url(asset_path('marker-icon.png')); }
+}
+
 .filter-type-heading {
   padding-top: 0.3em;
   float: left;

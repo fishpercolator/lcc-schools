@@ -22,13 +22,18 @@ module SchoolsHelper
   end
 
   def school_filter_link(text, name, value, options = {})
-    # <a class="btn btn-default" href="<%= sites_path by_green_status: 'green' %>">
-    #   <span class="glyphicon glyphicon-tree-deciduous"></span>
-    #   Greenfield
-    # </a>
     raise ArgumentError, 'name must be a symbol' unless name.is_a?(Symbol)
 
-    markup = content_tag(:span, text, class: 'filter-text')
+    glyphs = Array(options[:glyphs])
+
+    markup = if glyphs.try(:any?)
+               glyphs.map do |glyph|
+                 content_tag :span, nil, class: "image-glyph #{glyph}"
+               end.join("\n")
+             else
+               ''
+             end
+    markup = (markup + content_tag(:span, text, class: 'filter-text')).html_safe
 
     case
     when current_scopes[name] == value
@@ -40,7 +45,7 @@ module SchoolsHelper
                   href: schools_path(current_scopes.except(name)))
     else
       # Value should be added to the query string
-      content_tag(:a, markup, class: options[:class] || 'btn btn-default',
+      content_tag(:a, markup, class: 'btn btn-default',
                   href: schools_path(current_scopes.merge({name => value})))
     end
 
