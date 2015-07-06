@@ -44,7 +44,10 @@ $padding-dl-and-reason: 1%;
 
   .badge {
     color: black;
-    &.contended { background-color: $negative; }
-    &.not-contended { background-color: $positive; }
   }
 }
+
+.badge-contention-high   { color: black; background-color: $negative; }
+.badge-contention-medium { color: black; background-color: $neutral; }
+.badge-contention-low    { color: black; background-color: $positive; }
+

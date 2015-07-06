@@ -47,10 +47,13 @@ module SchoolsHelper
   end
 
   def contention_for(school)
-    if school.contended?
-      content_tag :span, 'Oversubscribed', class: 'badge contended'
+    case
+    when school.not_all_nearest
+      content_tag :span, 'Not all nearest allocated', class: 'badge badge-contention-high'
+    when school.contended?
+      content_tag :span, 'Oversubscribed',            class: 'badge badge-contention-medium'
     else
-      content_tag :span, 'None', class: 'badge not-contended'
+      content_tag :span, 'Availability',              class: 'badge badge-contention-low'
     end
   end
 end

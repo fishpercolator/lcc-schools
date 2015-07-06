@@ -11,6 +11,13 @@ a slightly fleshed-out version of the app presented (with these
 * In the schools list page, there's a full text search. It indexes common text fields, including postcode, so you can,
   for example, link to [all the primary schools in LS17](/schools?containing_text=LS17&phase=primary), or the 
   [only three secondary schools in Leeds](/schools?phase=secondary&admissions_policy=own_admissions_policy) with their own admission policy.
+  
+### The traffic light system
+
+In the tables, you'll see <span class="badge badge-contention-low">Availability</span> for schools that took in fewer children 
+than their available spaces in 2015. You'll see <span class="badge badge-contention-medium">Oversubscribed</span> whenever any 
+child was refused a place. And you'll see <span class="badge badge-contention-high">Not all nearest allocated</span>
+when not all children for whom the school was their nearest were given a place.
 
 ## Limitations
 
