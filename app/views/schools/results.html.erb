@@ -1,7 +1,7 @@
 <%= content_for :head do %>
   <link rel="alternate"
         type="application/vnd.geo+json"
-        href="<%= schools_results_path.sub(/results(\?)?/, 'results.geojson\1') %>">
+        href="<%= schools_results_path(format: :geojson) %>">
 <% end %>
 
 <h1>Your results</h1>

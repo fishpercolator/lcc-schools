@@ -19,4 +19,13 @@ class SchoolsController < ApplicationController
       format.geojson { render geojson: @schools }
     end
   end
+
+  def index
+    @schools = School.all
+
+    respond_to do |format|
+      format.html    { render }
+      format.geojson { render geojson: @schools }
+    end
+  end
 end

@@ -103,10 +103,11 @@ class @FeatureMap
       }
     ).addTo(@map)
 
-    @homeLayer = L.geoJson(
-      homePoint,
-      pointToLayer: (feature, latlng) => L.marker(latlng, { icon: new HouseIcon() })
-    ).addTo(@map)
+    if(homePoint?)
+      @homeLayer = L.geoJson(
+        homePoint,
+        pointToLayer: (feature, latlng) => L.marker(latlng, { icon: new HouseIcon() })
+      ).addTo(@map)
 
     @nearestLayers    = []
     @nonNearestLayers = []
