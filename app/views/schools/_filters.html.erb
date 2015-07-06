@@ -1,6 +1,28 @@
 <div id="filters-container">
   <div class="filters well well-lg col-lg-12" aria-expanded="true" id="filters-panel">
     <div class="filter-type">
+      <label class="filter-type-heading">Phase</label>
+
+      <div class="btn-group school-type" role="group" aria-label="School type">
+        <div class="btn-group" role="group">
+          <%= school_filter_link 'Primary', :phase, 'primary'  %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= school_filter_link 'Secondary', :phase, 'secondary'  %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= school_filter_link 'Junior', :phase, 'junior'  %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= school_filter_link 'Infant', :phase, 'infant'  %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= school_filter_link 'All', :phase, :all %>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-type">
       <label class="filter-type-heading">Admissions Policy</label>
 
       <div class="btn-group school-type" role="group" aria-label="School type">

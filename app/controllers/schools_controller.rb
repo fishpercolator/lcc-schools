@@ -10,6 +10,7 @@ class SchoolsController < ApplicationController
   end
 
   has_scope :containing_text
+  has_scope :phase
 
   def apply
   end

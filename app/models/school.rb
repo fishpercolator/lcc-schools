@@ -9,6 +9,10 @@ class School < ActiveRecord::Base
     postcode: 'B'
   }
 
+  scope :phase, -> (phase) {
+    where("schools.phase ~* ?", [phase])
+  }
+
   scope :nearest_to, -> (point) {
     select("schools.*, ST_Distance(schools.centroid,'SRID=4326;POINT(#{point.lon} #{point.lat})'::geometry) AS distance").
     order("schools.centroid <->'SRID=4326;POINT(#{point.lon} #{point.lat})'::geometry")
