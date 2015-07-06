@@ -45,4 +45,12 @@ module SchoolsHelper
     end
 
   end
+
+  def contention_for(school)
+    if school.contended?
+      content_tag :span, 'Oversubscribed', class: 'badge contended'
+    else
+      content_tag :span, 'None', class: 'badge not-contended'
+    end
+  end
 end

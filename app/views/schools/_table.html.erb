@@ -2,6 +2,7 @@
   <thead>
   <tr>
     <th class="zoom"></th>
+    <th class="contention">Oversubscribed?</th>
     <th class="name">Name</th>
     <th>Address</th>
   </tr>
@@ -11,6 +12,7 @@
   <% @schools.each do |school| %>
     <tr class="school" data-school-code="<%= school.code %>">
       <td class="zoom"><a href= '#' data-school-code="<%= school.code %>"><span class="glyphicon glyphicon-screenshot" /></a></td>
+      <td class="contention col-md-1"><%= contention_for(school) %></td>
       <td class="school-name">
         <span>
           <%= link_to school.name, school %>

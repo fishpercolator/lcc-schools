@@ -31,6 +31,8 @@ module Schools
             school.priority3 = row['Priority 3']
             school.priority4 = row['Priority 4']
             school.priority5 = row['Priority 5']
+            school.from_age = row['AgeRangeMinimum']
+            school.to_age = row['AgeRangeMaximum']
 
             match = row['Allocated'] && row['Allocated'].match(ALLOCATED_NUMBERS)
             if match

@@ -54,6 +54,10 @@ class School < ActiveRecord::Base
       sum
     end
   end
+
+  def age_range
+    "#{from_age}-#{to_age}"
+  end
 private
   def priority_methods
     %i( priority1a priority1b priority2
