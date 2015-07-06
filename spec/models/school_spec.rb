@@ -11,4 +11,28 @@ describe School do
       specify { school.should be_own_admission_policy }
     end
   end
+
+  describe '#contended?' do
+    context 'no contention' do
+      let(:school) { School.new(name: 'Some school', available_places: 99, nearest: nil)}
+      specify { school.should_not be_contended }
+    end
+    context 'contention' do
+      let(:school) { School.new(name: 'Some school', available_places: 99, nearest: 0.5)}
+      specify { school.should be_contended }
+    end
+  end
+
+  describe '#priority_stats?, #sum_of_priorities' do
+    context 'some stats' do
+      let(:school) { School.new(priority1a: 1, priority5: 2) }
+      it('has priority stats') { school.priority_stats?.should == true }
+      it('sums to 3')          { school.sum_of_priorities.should == 3 }
+    end
+    context 'no stats' do
+      let(:school) { School.new }
+      it('has no stats') { school.priority_stats?.should == false }
+      it('sums to nil')  { school.sum_of_priorities.should be_nil }
+    end
+  end
 end

@@ -36,7 +36,7 @@ module Schools
             if match
               school.number_of_admissions = $1
             else
-              school.number_of_admissions = $2.to_i / 2
+              school.number_of_admissions = school.sum_of_priorities
             end
           end
           next if row['X_REF'] == '#N/A'

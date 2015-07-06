@@ -33,4 +33,30 @@ class School < ActiveRecord::Base
   def own_admission_policy?
     !!(name =~ /voluntary/i)
   end
+
+  def to_param
+    code
+  end
+
+  def contended?
+    nearest.present?
+  end
+
+  def priority_stats?
+    priority_methods.any? { |priority| (send priority).present? }
+  end
+
+  def sum_of_priorities
+    return nil unless priority_stats?
+    priority_methods.inject(0) do |sum, prop|
+      value = send prop
+      sum += value if value
+      sum
+    end
+  end
+private
+  def priority_methods
+    %i( priority1a priority1b priority2
+         priority3 priority4 priority5  )
+  end
 end

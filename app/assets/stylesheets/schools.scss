@@ -16,6 +16,10 @@ table.schools {
 
 $padding-dl-and-reason: 1%;
 
+.school-details {
+  min-height: 12em;
+}
+
 .school, .leaflet-popup-content {
   dl {
     padding: $padding-dl-and-reason;

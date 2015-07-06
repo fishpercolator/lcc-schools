@@ -35,7 +35,9 @@ class SchoolsController < ApplicationController
 
     respond_to do |format|
       format.html    { render }
-      format.geojson { render geojson: @schools }
+      format.geojson {
+        render geojson: @schools
+      }
     end
   end
 
@@ -45,6 +47,15 @@ class SchoolsController < ApplicationController
     respond_to do |format|
       format.html    { render }
       format.geojson { render geojson: @schools }
+    end
+  end
+
+  def show
+    @school = School.find_by!(code: params[:id])
+
+    respond_to do |format|
+      format.html    { render }
+      format.geojson { render geojson: @school }
     end
   end
 end

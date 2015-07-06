@@ -112,6 +112,8 @@ class @FeatureMap
     @nearestLayers    = []
     @nonNearestLayers = []
 
+    @data_feature.features = [@data_feature] unless @data_feature.features?
+
     @nearestLayers.push(nearestCircle(feature, 'nearest', {color: '#22F'})) \
       for feature in @data_feature.features \
       when feature.properties.nearest?
