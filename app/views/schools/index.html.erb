@@ -1,11 +1,12 @@
 <%= content_for :head do %>
   <link rel="alternate"
-        type="application/vnd.geo+json"
-        href="<%= schools_path(format: :geojson) %>">
+      type="application/vnd.geo+json"
+      href="<%= schools_path(current_scopes).sub(/schools(\?)?/, 'schools.geojson\1') %>">
 <% end %>
 
-
+<%= render 'filters' %>
 <h2><%= "#{@schools.count} schools" %></h2>
 <div id="map"></div>
+
 
 <%= render 'table' %>

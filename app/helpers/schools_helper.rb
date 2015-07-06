@@ -20,4 +20,29 @@ module SchoolsHelper
   def home_json(home_lonlat)
     RGeo::GeoJSON.encode(RGeo::GeoJSON::EntityFactory.instance.feature(home_lonlat, nil)).to_json.html_safe
   end
+
+  def school_filter_link(text, name, value, options = {})
+    # <a class="btn btn-default" href="<%= sites_path by_green_status: 'green' %>">
+    #   <span class="glyphicon glyphicon-tree-deciduous"></span>
+    #   Greenfield
+    # </a>
+    raise ArgumentError, 'name must be a symbol' unless name.is_a?(Symbol)
+
+    markup = content_tag(:span, text, class: 'filter-text')
+
+    case
+    when current_scopes[name] == value
+      # Value is already selected. Don't render a link
+      content_tag(:span, markup, class: 'btn btn-default active')
+    when value == :all
+      # Value should be removed from the query string
+      content_tag(:a, markup, class: "btn btn-default#{" active" if current_scopes[name].nil? }",
+                  href: schools_path(current_scopes.except(name)))
+    else
+      # Value should be added to the query string
+      content_tag(:a, markup, class: options[:class] || 'btn btn-default',
+                  href: schools_path(current_scopes.merge({name => value})))
+    end
+
+  end
 end

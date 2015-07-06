@@ -1,0 +1,44 @@
+#filters-container {
+  position: relative;
+
+  .collapser {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    max-width: 30px;
+    padding: 2px 5px;
+    z-index: 1;
+  }
+}
+
+.collapsing {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.filter-type {
+  margin-bottom: 0.2em;
+
+  label {
+    font-weight: bold;
+  }
+
+  > .btn-group, .input-group {
+    min-width: 240px;
+  }
+
+  .glyphicon:nth-last-child(2) {
+    margin-right: 0.5em;
+  }
+}
+
+.filter-type-heading {
+  padding-top: 0.3em;
+  float: left;
+  min-width: 10em;
+  font-weight: normal;
+}
+
+.greenfield-status .filter-text {
+  @extend .hidden-xs;
+}

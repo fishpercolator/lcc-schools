@@ -1,0 +1,20 @@
+<div id="filters-container">
+  <div class="filters well well-lg col-lg-12" aria-expanded="true" id="filters-panel">
+    <div class="filter-type">
+      <label class="filter-type-heading">School type</label>
+
+      <div class="btn-group school-type" role="group" aria-label="School type">
+        <div class="btn-group" role="group">
+          <%= school_filter_link 'Community', :admissions_policy, 'community'  %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= school_filter_link 'Own Admissions Policy', :admissions_policy, 'own_admissions_policy'  %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= school_filter_link 'All', :admissions_policy, :all%>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

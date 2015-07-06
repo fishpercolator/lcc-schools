@@ -1,4 +1,14 @@
 class SchoolsController < ApplicationController
+  has_scope :community
+  has_scope :voluntary
+  has_scope :admissions_policy do |_, scope, value|
+    case value.to_sym
+    when :community then scope.community
+    when :own_admissions_policy then scope.own_admissions_policy
+    else scope
+    end
+  end
+
   def apply
   end
 
@@ -21,7 +31,7 @@ class SchoolsController < ApplicationController
   end
 
   def index
-    @schools = School.all
+    @schools = apply_scopes(School).all
 
     respond_to do |format|
       format.html    { render }
