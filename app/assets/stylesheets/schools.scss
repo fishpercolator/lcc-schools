@@ -47,7 +47,8 @@ $padding-dl-and-reason: 1%;
   }
 }
 
-.badge-contention-high   { color: black; background-color: $negative; }
-.badge-contention-medium { color: black; background-color: $neutral; }
-.badge-contention-low    { color: black; background-color: $positive; }
+.badge-contention-high    { color: black; background-color: $negative; }
+.badge-contention-medium  { color: black; background-color: $neutral; }
+.badge-contention-low     { color: black; background-color: $positive; }
+.badge-contention-unknown { color: black; background-color: $null; }
 

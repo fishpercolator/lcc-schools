@@ -52,6 +52,8 @@ module SchoolsHelper
       content_tag :span, 'Not all nearest allocated', class: 'badge badge-contention-high'
     when school.contended?
       content_tag :span, 'Oversubscribed',            class: 'badge badge-contention-medium'
+    when school.own_admission_policy?
+      content_tag :span, 'Unknown',                   class: 'badge badge-contention-unknown'
     else
       content_tag :span, 'Availability',              class: 'badge badge-contention-low'
     end
