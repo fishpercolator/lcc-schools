@@ -19,4 +19,5 @@ a slightly fleshed-out version of the app presented (with these
 * The "apply for a school place" flow is limited to one location.
 * The "layers" button isn't doing the hard work to make it simple! It's doing what was simplest on the day. 
   It does cater for the more engaged parents, but it's hiding immediately useful information. We can present that more effectively.
+* No facilities, or filters for facilities (e.g. Breakfast club/cycle storage) are available.
   
