@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require leaflet
 //= require leaflet.markercluster
 //= require jquery_ujs

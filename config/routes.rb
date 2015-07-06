@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  get 'about', to: 'static_content#about'
+
   get 'schools/apply', to: 'schools#apply'
   get 'schools/results', to: 'schools#results'
   get 'schools/compare', to: 'schools#compare'
