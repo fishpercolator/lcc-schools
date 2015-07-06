@@ -1,10 +1,19 @@
-// Contention
+// Header/footer
+$header-footer-background: black;
+$header-footer-foreground: white;
+
+// Scoring
 $very-positive: #63BE7B;
 $positive: #B1D580;
 $neutral: #FFEB84;
 $null:  silver;
 $negative: #FBAA77;
 $very-negative: #F8696B;
+
+// Site types
+$greenfield: darkgreen;
+$brownfield: saddlebrown;
+$mixed:      olive;
 
 // Maps
 $cluster-colour: #6b7d90;
