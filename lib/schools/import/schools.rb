@@ -25,6 +25,12 @@ module Schools
             school.available_places = row['NumberOfPlacesAvailable']
             school.nearest = row['Nearest']
             school.non_nearest = row['Non Nearest']
+            school.priority1a = row['Priority 1A']
+            school.priority1b = row['Priority 1B']
+            school.priority2 = row['Priority 2']
+            school.priority3 = row['Priority 3']
+            school.priority4 = row['Priority 4']
+            school.priority5 = row['Priority 5']
 
             match = row['Allocated'] && row['Allocated'].match(ALLOCATED_NUMBERS)
             if match
