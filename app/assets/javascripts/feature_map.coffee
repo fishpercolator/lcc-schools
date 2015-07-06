@@ -88,7 +88,7 @@ class @FeatureMap
       scrollWheelZoom: false
     })
 
-    osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(@map)
 
@@ -124,17 +124,13 @@ class @FeatureMap
 
     @nonNearestGroup = L.featureGroup(@nonNearestLayers)
 
-    baseLayers = {
-      "OpenStreetMap": osmLayer
-    }
-
     overlays = {
       "Show schools": @featureLayer,
       "Who got in when it was their nearest school?":    @nearestGroup,
       "Who got in when it wasn't their nearest school?": @nonNearestGroup
     }
 
-    L.control.layers(baseLayers, overlays).addTo(@map)
+    L.control.layers(null, overlays).addTo(@map)
 
     if @options.fitMapToBounds
       @fitBounds()
