@@ -23,8 +23,23 @@ When(/^I filter by community admission policy$/) do
 end
 
 Then(/^I should see only schools with a community admission policy$/) do
-  save_screenshot('/Users/russ/Desktop/foo.png')
   within 'table.schools' do
     expect(page).to have_selector('.school', count: @schools.count(&:community_admission_policy?))
+  end
+end
+
+When(/^I search schools by name$/) do
+  within '.filter-type .containing-text' do
+    fill_in 'containing_text', with: TEST_SEARCH_TERM
+    click_button 'Search'
+  end
+end
+
+Then(/^I should see only schools that match that name$/) do
+  matching_term = Regexp.new(TEST_SEARCH_TERM)
+  matching_schools = @schools.select { |s| s.address1 =~ matching_term || s.name =~ matching_term }
+
+  within 'table.schools' do
+    expect(page).to have_selector('.school', count: matching_schools.length)
   end
 end
