@@ -30,6 +30,10 @@ class School < ActiveRecord::Base
     "#{address1} #{postcode}"
   end
 
+  def community_admission_policy?
+    !own_admission_policy?
+  end
+
   def own_admission_policy?
     !!(name =~ /voluntary/i)
   end
