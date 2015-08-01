@@ -68,6 +68,17 @@ module SchoolsHelper
     sym.to_s.humanize.sub(/([1-5])/, ' \1')
   end
 
+  def tooltip(sym)
+    case sym
+    when :priority1a then 'Children in public care or fostered by arrangement'
+    when :priority1b then 'Special or exceptional educational or medical needs that can only be met at a specific school'
+    when :priority2 then 'Siblings at same school and same address'
+    when :priority3 then 'Child already attending a linked school'
+    when :priority4 then 'Nearest school'
+    when :priority5 then 'All others choosing a Leeds school not their nearest, in decreasing order of distance'
+    end
+  end
+
   def short_priority(sym)
     long_priority(sym).split(' ').last
   end

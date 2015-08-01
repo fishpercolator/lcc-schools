@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap.js
 //= require leaflet
 //= require leaflet.markercluster
 //= require jquery_ujs

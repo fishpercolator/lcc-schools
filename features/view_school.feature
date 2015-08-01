@@ -7,4 +7,5 @@ Feature:
     Given there is a school with some priority data
     When I visit that school's page
     Then I should see that school's details
-    And I should see a graph showing how places were allocated
+    And I should see a graph showing how places were allocated by priority
+    And I should see help for each of the priorities

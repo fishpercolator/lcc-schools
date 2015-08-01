@@ -17,15 +17,19 @@ Then(/^I should see that "(.+)" is "(.+)"$/) do |name, value|
   end
 end
 
-And(/^I should see a graph showing how places were allocated$/) do
+And(/^I should see a graph showing how places were allocated by priority$/) do
   within '.admissions-graph' do
     expect(page).to have_selector('dt', text: 'Priority 1a')
     expect(page).to have_selector('dd label', text: '1')
-    expect(page).to have_selector('dd .priority.priority1a')
-    expect(page).to have_selector('dd .priority.priority1b')
-    expect(page).to have_selector('dd .priority.priority2')
-    expect(page).to have_selector('dd .priority.priority3')
-    expect(page).to have_selector('dd .priority.priority4')
-    expect(page).to have_selector('dd .priority.priority5')
+    expect(page).to have_selector('dd .bar.priority1a')
+    expect(page).to have_selector('dd .bar.priority1b')
+    expect(page).to have_selector('dd .bar.priority2')
+    expect(page).to have_selector('dd .bar.priority3')
+    expect(page).to have_selector('dd .bar.priority4')
+    expect(page).to have_selector('dd .bar.priority5')
   end
+end
+
+And(/^I should see help for each of the priorities$/) do
+  expect(page).to have_selector('dd label a', count: 6)
 end

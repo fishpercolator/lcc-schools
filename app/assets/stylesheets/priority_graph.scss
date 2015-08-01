@@ -1,7 +1,7 @@
 $label-pad: -10%;
 
 dl.admissions-graph {
-  font-size: 80%;
+  //font-size: 80%;
   height: 150px;
 
   @media (max-width: $screen-sm) {
@@ -31,10 +31,12 @@ dl.admissions-graph {
     width: 16%;
     height: 100%;
 
-    .priority {
+    .bar {
       position: absolute;
       bottom: 0;
       width: 75%;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
     }
 
     label {
@@ -42,6 +44,14 @@ dl.admissions-graph {
       top: -1.5em;
       left: $label-pad;
       width: 100%;
+      font-weight: normal;
+
+      .priority1a { @extend .fa;@extend .fa-users; }
+      .priority1b { @extend .fa;@extend .fa-medkit; }
+      .priority2  { @extend .fa;@extend .fa-user-plus; }
+      .priority3  { @extend .fa;@extend .fa-link; }
+      .priority4  { @extend .fa;@extend .fa-home; }
+      .priority5  { @extend .fa;@extend .fa-arrows; }
     }
 
     .value {
@@ -51,12 +61,12 @@ dl.admissions-graph {
       left: $label-pad;
     }
 
-    .priority1a { background-color: darken($very-negative, 5%); }
-    .priority1b { background-color: $very-negative; }
-    .priority2  { background-color: $negative; }
-    .priority3  { background-color: $neutral; }
-    .priority4  { background-color: $positive; }
-    .priority5  { background-color: $very-positive; }
+    .bar.priority1a { background-color: darken($very-negative, 5%); }
+    .bar.priority1b { background-color: $very-negative; }
+    .bar.priority2  { background-color: $negative; }
+    .bar.priority3  { background-color: $neutral; }
+    .bar.priority4  { background-color: $positive; }
+    .bar.priority5  { background-color: $very-positive; }
   }
 
 }
