@@ -1,0 +1,62 @@
+$label-pad: -10%;
+
+dl.admissions-graph {
+  font-size: 80%;
+  height: 150px;
+
+  @media (max-width: $screen-sm) {
+    width: 100%;
+  }
+
+  @media (min-width: $screen-sm) {
+    width: 300px;
+  }
+  @media (min-width: $screen-md) {
+    width: 400px;
+  }
+  @media (min-width: $screen-lg) {
+    width: 550px;
+  }
+
+  padding: 28px 0px 17px 5px;
+
+  dt {
+    display: none;
+  }
+
+  dd {
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 16%;
+    height: 100%;
+
+    .priority {
+      position: absolute;
+      bottom: 0;
+      width: 75%;
+    }
+
+    label {
+      position: absolute;
+      top: -1.5em;
+      left: $label-pad;
+      width: 100%;
+    }
+
+    .value {
+      width: 100%;
+      position: absolute;
+      bottom: -1.5em;
+      left: $label-pad;
+    }
+
+    .priority1a { background-color: darken($very-negative, 5%); }
+    .priority1b { background-color: $very-negative; }
+    .priority2  { background-color: $negative; }
+    .priority3  { background-color: $neutral; }
+    .priority4  { background-color: $positive; }
+    .priority5  { background-color: $very-positive; }
+  }
+
+}

@@ -7,3 +7,7 @@ Given(/^there are some schools$/) do
     create(:secondary, :availability)
   ]
 end
+
+Given(/^there is a school with some priority data$/) do
+  @school = create :school, :with_priority_data
+end

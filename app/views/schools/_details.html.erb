@@ -1,0 +1,35 @@
+<div class="school-details well well-lg col-md-12">
+  <dl class="col-md-6">
+    <dt>Name</dt>
+    <dd><%= @school.name %></dd>
+
+    <dt>Address</dt>
+    <dd><%= @school.address %></dd>
+
+    <dt>Head teacher</dt>
+    <dd><%= @school.headteacher %></dd>
+
+    <dt>Website</dt>
+    <dd><%= link_to @school.website, @school.website %></dd>
+
+    <dt>Email</dt>
+    <dd><%= link_to @school.email, "mailto:#{@school.email}" %></dd>
+  </dl>
+
+
+  <dl class="col-md-6">
+    <dt>Pupils</dt>
+    <dd><%= @school.number_of_pupils %></dd>
+
+    <dt>Age range</dt>
+    <dd><%= @school.age_range %></dd>
+
+    <dt>Available Places</dt>
+    <dd><%= @school.available_places %></dd>
+
+    <% if @school.number_of_admissions %>
+      <dt>Places allocated in 2015</dt>
+      <dd><%= @school.number_of_admissions %></dd>
+    <% end %>
+  </dl>
+</div>

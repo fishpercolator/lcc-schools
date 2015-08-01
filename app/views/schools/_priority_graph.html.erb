@@ -1,0 +1,11 @@
+<dl class="admissions-graph">
+  <% School.priorities.each do |attr| %>
+    <dt><%= long_priority(attr) %></dt>
+    <dd>
+      <label><%= short_priority(attr) %></label>
+      <div class="priority <%= attr %>" style="height: <%= priority_height_percent(@school, attr) %>;">
+      </div>
+      <div class="value"><%= @school.send(attr) || 0 %></div>
+    </dd>
+  <% end %>
+</dl>

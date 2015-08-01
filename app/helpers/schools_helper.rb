@@ -63,4 +63,23 @@ module SchoolsHelper
       content_tag :span, 'Availability',              class: "badge badge-contention-low #{options[:class]}"
     end
   end
+
+  def long_priority(sym)
+    sym.to_s.humanize.sub(/([1-5])/, ' \1')
+  end
+
+  def short_priority(sym)
+    long_priority(sym).split(' ').last
+  end
+
+  def priority_height_percent(school, attr)
+    return '0%' if school.sum_of_priorities.nil?
+
+    max_in_priority = School.priorities.map { |sym| school.send(sym) || 0 }.max
+    attr_value = school.send(attr) || 0
+
+    percent = number_to_percentage((attr_value.to_f / max_in_priority) * 100, precision: 0)
+
+    percent == '0%' ? '1%' : percent
+  end
 end
