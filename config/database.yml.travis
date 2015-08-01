@@ -1,0 +1,6 @@
+test: 
+  adapter: postgis
+  encoding: unicode
+  pool: 5
+  database: schools_test
+
