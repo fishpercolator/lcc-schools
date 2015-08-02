@@ -68,7 +68,7 @@ module SchoolsHelper
     sym.to_s.humanize.sub(/([1-5])/, ' \1')
   end
 
-  def tooltip(sym)
+  def tooltip_priority(sym)
     case sym
     when :priority1a then 'Children in public care or fostered by arrangement'
     when :priority1b then 'Special or exceptional educational or medical needs that can only be met at a specific school'
@@ -92,5 +92,14 @@ module SchoolsHelper
     percent = number_to_percentage((attr_value.to_f / max_in_priority) * 100, precision: 0)
 
     percent == '0%' ? '1%' : percent
+  end
+
+  def fa_priority_class(attr)
+    { :priority1a => 'users',
+      :priority1b => 'medkit',
+      :priority2  => 'user-plus',
+      :priority3  => 'link',
+      :priority4  => 'home',
+      :priority5  => 'arrows' }[attr] + ' inverse'
   end
 end

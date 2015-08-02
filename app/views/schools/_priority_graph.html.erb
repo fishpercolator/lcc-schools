@@ -4,15 +4,15 @@
     <dd>
       <label>
         <a data-toggle="popover" data-trigger="focus"
-           data-placement="bottom" data-content="<%= tooltip(attr) %>"
+           data-placement="bottom" data-content="<%= tooltip_priority(attr) %>"
            href="#" title="<%= long_priority(attr) %>"
         >
           <%= short_priority(attr) %>
-          <span class="fa <%= attr %>"></span>
+          <%= fa_stacked_icon fa_priority_class(attr), base: 'circle' %>
         </a>
       </label>
 
-      <div class="bar <%= attr %>" style="height: <%= priority_height_percent(@school, attr) %>;" title="<%= long_priority(attr) + ' - ' + tooltip(attr) %>"></div>
+      <div class="bar <%= attr %>" style="height: <%= priority_height_percent(@school, attr) %>;" title="<%= long_priority(attr) + ' - ' + tooltip_priority(attr) %>"></div>
       <div class="value"><%= @school.send(attr) || 0 %></div>
     </dd>
   <% end %>

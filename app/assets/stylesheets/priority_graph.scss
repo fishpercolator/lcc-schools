@@ -1,7 +1,6 @@
 $label-pad: -10%;
 
 dl.admissions-graph {
-  //font-size: 80%;
   height: 150px;
 
   @media (max-width: $screen-sm) {
@@ -18,7 +17,7 @@ dl.admissions-graph {
     width: 550px;
   }
 
-  padding: 28px 0px 17px 5px;
+  padding: 30px 0px 17px 5px;
 
   dt {
     display: none;
@@ -28,30 +27,25 @@ dl.admissions-graph {
     float: left;
     position: relative;
     text-align: center;
-    width: 16%;
+    width: 16.5%;
     height: 100%;
 
     .bar {
       position: absolute;
       bottom: 0;
-      width: 75%;
+      width: 80%;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
     }
 
     label {
       position: absolute;
-      top: -1.5em;
+      top: -2.2em;
       left: $label-pad;
       width: 100%;
       font-weight: normal;
-
-      .priority1a { @extend .fa-users; }
-      .priority1b { @extend .fa-medkit; }
-      .priority2  { @extend .fa-user-plus; }
-      .priority3  { @extend .fa-link; }
-      .priority4  { @extend .fa-home; }
-      .priority5  { @extend .fa-arrows; }
+      overflow: hidden;
+      white-space: nowrap; // don't let icons become separated from their text
     }
 
     .value {
