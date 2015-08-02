@@ -1,0 +1,66 @@
+$label-pad: -10%;
+
+dl.admissions-graph {
+  height: 150px;
+
+  @media (max-width: $screen-sm) {
+    width: 100%;
+  }
+
+  @media (min-width: $screen-sm) {
+    width: 300px;
+  }
+  @media (min-width: $screen-md) {
+    width: 400px;
+  }
+  @media (min-width: $screen-lg) {
+    width: 550px;
+  }
+
+  padding: 30px 0px 17px 5px;
+
+  dt {
+    display: none;
+  }
+
+  dd {
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 16.5%;
+    height: 100%;
+
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 80%;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+
+    label {
+      position: absolute;
+      top: -2.2em;
+      left: $label-pad;
+      width: 100%;
+      font-weight: normal;
+      overflow: hidden;
+      white-space: nowrap; // don't let icons become separated from their text
+    }
+
+    .value {
+      width: 100%;
+      position: absolute;
+      bottom: -1.5em;
+      left: $label-pad;
+    }
+
+    .bar.priority1a { background-color: darken($very-negative, 5%); }
+    .bar.priority1b { background-color: $very-negative; }
+    .bar.priority2  { background-color: $negative; }
+    .bar.priority3  { background-color: $neutral; }
+    .bar.priority4  { background-color: $positive; }
+    .bar.priority5  { background-color: $very-positive; }
+  }
+
+}

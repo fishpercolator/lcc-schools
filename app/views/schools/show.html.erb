@@ -4,45 +4,27 @@
         href="<%= school_path(@school, format: :geojson) %>">
 <% end %>
 
-<div class="school">
-  <%= contention_for(@school, class: 'pull-right margin-after') %>
-  <h1><%= @school.name %></h1>
+<div class="school row">
+
+  <div class="col-sm-7 margin-after">
+    <h1>
+      <%= @school.name %>
+      <small class="places"><%= @school.available_places %> places</small>
+    </h1>
+
+    <%= contention_for(@school) %>
+  </div>
+
+
+  <div class="col-sm-5">
+    <% if @school.priority_stats? %>
+      <%= render 'priority_graph' %>
+    <% end  %>
+  </div>
+
 
   <div id="map"></div>
 
-  <div class="school-details well well-lg col-md-12">
-    <dl class="col-md-6">
-      <dt>Name</dt>
-      <dd><%= @school.name %></dd>
-
-      <dt>Address</dt>
-      <dd><%= @school.address %></dd>
-
-      <dt>Head teacher</dt>
-      <dd><%= @school.headteacher %></dd>
-
-      <dt>Website</dt>
-      <dd><%= link_to @school.website, @school.website %></dd>
-
-      <dt>Email</dt>
-      <dd><%= link_to @school.email, "mailto:#{@school.email}" %></dd>
-    </dl>
-
-
-    <dl class="col-md-6">
-      <dt>Pupils</dt>
-      <dd><%= @school.number_of_pupils %></dd>
-
-      <dt>Age range</dt>
-      <dd><%= @school.age_range %></dd>
-
-      <dt>Available Places</dt>
-      <dd><%= @school.available_places %></dd>
-
-      <% if @school.number_of_admissions %>
-        <dt>Places allocated in 2015</dt>
-        <dd><%= @school.number_of_admissions %></dd>
-      <% end %>
-    </dl>
-  </div>
+  <%= render 'details' %>
 </div>
+

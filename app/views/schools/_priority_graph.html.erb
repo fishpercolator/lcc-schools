@@ -1,0 +1,25 @@
+<dl class="admissions-graph">
+  <% School.priorities.each do |attr| %>
+    <dt><%= long_priority(attr) %></dt>
+    <dd>
+      <label>
+        <a data-toggle="popover" data-trigger="focus"
+           data-placement="bottom" data-content="<%= tooltip_priority(attr) %>"
+           href="#" title="<%= long_priority(attr) %>"
+        >
+          <%= short_priority(attr) %>
+          <%= fa_stacked_icon fa_priority_class(attr), base: 'circle' %>
+        </a>
+      </label>
+
+      <div class="bar <%= attr %>" style="height: <%= priority_height_percent(@school, attr) %>;" title="<%= long_priority(attr) + ' - ' + tooltip_priority(attr) %>"></div>
+      <div class="value"><%= @school.send(attr) || 0 %></div>
+    </dd>
+  <% end %>
+</dl>
+
+<script type="application/javascript">
+  $(function () {
+    $('[data-toggle="popover"]').popover({ container: 'body'})
+  })
+</script>

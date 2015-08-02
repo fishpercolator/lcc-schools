@@ -63,4 +63,43 @@ module SchoolsHelper
       content_tag :span, 'Availability',              class: "badge badge-contention-low #{options[:class]}"
     end
   end
+
+  def long_priority(sym)
+    sym.to_s.humanize.sub(/([1-5])/, ' \1')
+  end
+
+  def tooltip_priority(sym)
+    case sym
+    when :priority1a then 'Children in public care or fostered by arrangement'
+    when :priority1b then 'Special or exceptional educational or medical needs that can only be met at a specific school'
+    when :priority2 then 'Siblings at same school and same address'
+    when :priority3 then 'Child already attending a linked school'
+    when :priority4 then 'Nearest school'
+    when :priority5 then 'All others choosing a Leeds school not their nearest, in decreasing order of distance'
+    end
+  end
+
+  def short_priority(sym)
+    long_priority(sym).split(' ').last
+  end
+
+  def priority_height_percent(school, attr)
+    return '0%' if school.sum_of_priorities.nil?
+
+    max_in_priority = School.priorities.map { |sym| school.send(sym) || 0 }.max
+    attr_value = school.send(attr) || 0
+
+    percent = number_to_percentage((attr_value.to_f / max_in_priority) * 100, precision: 0)
+
+    percent == '0%' ? '1%' : percent
+  end
+
+  def fa_priority_class(attr)
+    { :priority1a => 'users',
+      :priority1b => 'medkit',
+      :priority2  => 'user-plus',
+      :priority3  => 'link',
+      :priority4  => 'home',
+      :priority5  => 'arrows' }[attr] + ' inverse'
+  end
 end

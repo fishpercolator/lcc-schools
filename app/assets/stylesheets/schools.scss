@@ -16,13 +16,36 @@ table.schools {
 
 $padding-dl-and-reason: 1%;
 
-.school-details {
-  overflow: auto;
+div.school {
+  .badge {
+    font-size: 120%;
+  }
+
+  .places {
+    white-space: nowrap;
+  }
+
+  dl.admissions-graph {
+    @extend .pull-right;
+  }
 }
 
 .school, .leaflet-popup-content {
   overflow: auto;
 
+  &.highlighted {
+    background-color: $row-site-highlight !important;
+  }
+
+  .badge {
+    color: black;
+  }
+}
+
+.school-details {
+  clear: left;
+
+  overflow: auto;
   dl {
     padding: $padding-dl-and-reason;
 
@@ -37,13 +60,6 @@ $padding-dl-and-reason: 1%;
     dd {
       float: right;
     }
-  }
-  &.highlighted {
-    background-color: $row-site-highlight !important;
-  }
-
-  .badge {
-    color: black;
   }
 }
 

@@ -47,12 +47,12 @@ class School < ActiveRecord::Base
   end
 
   def priority_stats?
-    priority_methods.any? { |priority| (send priority).present? }
+    School.priorities.any? { |priority| (send priority).present? }
   end
 
   def sum_of_priorities
     return nil unless priority_stats?
-    priority_methods.inject(0) do |sum, prop|
+    School.priorities.inject(0) do |sum, prop|
       value = send prop
       sum += value if value
       sum
@@ -62,8 +62,8 @@ class School < ActiveRecord::Base
   def age_range
     "#{from_age}-#{to_age}"
   end
-private
-  def priority_methods
+
+  def self.priorities
     %i( priority1a priority1b priority2
          priority3 priority4 priority5  )
   end
