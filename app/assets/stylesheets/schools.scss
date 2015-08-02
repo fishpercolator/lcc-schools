@@ -43,6 +43,8 @@ div.school {
 }
 
 .school-details {
+  clear: left;
+
   overflow: auto;
   dl {
     padding: $padding-dl-and-reason;
