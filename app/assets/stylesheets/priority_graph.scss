@@ -46,12 +46,12 @@ dl.admissions-graph {
       width: 100%;
       font-weight: normal;
 
-      .priority1a { @extend .fa;@extend .fa-users; }
-      .priority1b { @extend .fa;@extend .fa-medkit; }
-      .priority2  { @extend .fa;@extend .fa-user-plus; }
-      .priority3  { @extend .fa;@extend .fa-link; }
-      .priority4  { @extend .fa;@extend .fa-home; }
-      .priority5  { @extend .fa;@extend .fa-arrows; }
+      .priority1a { @extend .fa-users; }
+      .priority1b { @extend .fa-medkit; }
+      .priority2  { @extend .fa-user-plus; }
+      .priority3  { @extend .fa-link; }
+      .priority4  { @extend .fa-home; }
+      .priority5  { @extend .fa-arrows; }
     }
 
     .value {
