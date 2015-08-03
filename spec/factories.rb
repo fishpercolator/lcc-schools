@@ -44,7 +44,7 @@ FactoryGirl.define do
       priority5 3
     end
 
-    trait :voluntary do
+    trait :own_admissions_policy do
       name 'Schoolton school (Voluntary aided)'
     end
   end

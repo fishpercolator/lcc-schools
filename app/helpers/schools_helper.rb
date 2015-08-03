@@ -51,7 +51,7 @@ module SchoolsHelper
 
   end
 
-  def contention_for(school, options = {})
+  def contention_badge(school, options = {})
     case
     when school.not_all_nearest
       content_tag :span, 'Not all nearest allocated', class: "badge badge-contention-high #{options[:class]}"

@@ -12,7 +12,7 @@
   <% @schools.each do |school| %>
     <tr class="school" data-school-code="<%= school.code %>">
       <td class="zoom"><a href= '#' data-school-code="<%= school.code %>"><span class="glyphicon glyphicon-screenshot" /></a></td>
-      <td class="contention col-md-1"><%= contention_for(school) %></td>
+      <td class="contention col-md-1"><%= contention_badge(school) %></td>
       <td class="school-name">
         <span>
           <%= link_to school.name, school %>
