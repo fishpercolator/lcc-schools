@@ -12,7 +12,8 @@
         </a>
       </label>
 
-      <div class="bar <%= attr %>" style="height: <%= priority_height_percent(@school, attr) %>;" title="<%= long_priority(attr) + ' - ' + tooltip_priority(attr) %>"></div>
+      <div class="bar <%= attr %>" style="height: <%= priority_height_percent(@school, attr) %>;"
+           title="<%= long_priority(attr) + ' - ' + tooltip_priority(attr) %>"></div>
       <div class="value"><%= @school.send(attr) || 0 %></div>
     </dd>
   <% end %>

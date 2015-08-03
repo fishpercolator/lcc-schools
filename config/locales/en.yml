@@ -20,4 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  priority_popup_help:
+    priority1a: 'Children in public care or fostered by arrangement'
+    priority1b: 'Special or exceptional educational or medical needs that can only be met at a specific school'
+    priority2: 'Siblings at same school and same address'
+    priority3: 'Child already attending a linked school'
+    priority4: 'Nearest school'
+    priority5: 'All others choosing a Leeds school not their nearest, in decreasing order of distance'
