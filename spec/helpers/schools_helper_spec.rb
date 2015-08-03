@@ -54,4 +54,68 @@ describe SchoolsHelper do
     end
   end
 
+  describe '#school_filter_link' do
+    let(:current_scopes) {{}}
+
+    before { allow(helper).to receive(:current_scopes).and_return(current_scopes) }
+
+    subject(:markup) { helper.school_filter_link(text, name, value, options) }
+
+    it 'is not liberal in what it expects' do
+      expect { helper.school_filter_link 'Text', 'string_name', '1' }.to raise_error(
+                                                                         ArgumentError,
+                                                                         /name must be a symbol/
+                                                                       )
+    end
+
+    context 'by_admission_policy' do
+      let(:text)  { 'Own' }
+      let(:name)  { :by_admission_policy }
+      let(:value) { 'own_admissions_policy' }
+      let(:options) { { glyphs: %w(own-admissions-policy) } }
+
+      context 'is not selected' do
+        let(:current_scopes) { {something: 'else'} }
+
+        it { should be_an(ActiveSupport::SafeBuffer) }
+        it { should include ('Own') }
+        it { should include ('<a class="btn') }
+        it { should_not include ('<span class="btn') }
+        it { should include('<span class="image-glyph own-admissions-policy"')}
+        it { should include('something=else')}
+        it { should include('by_admission_policy=own_admissions_policy')}
+      end
+
+      context 'is already selected' do
+        let(:current_scopes) { {something: 'else', by_admission_policy: 'own_admissions_policy'} }
+
+        it { should be_an(ActiveSupport::SafeBuffer) }
+        it { should_not include ('<a class="btn') }
+        it { should include ('<span class="btn') }
+        it { should include ('active') }
+        it { should include('<span class="image-glyph own-admissions-policy"')}
+      end
+    end
+
+    context '"All" links' do
+      let(:current_scopes) { { phase: 'Primary', something: 'else' } }
+
+      let(:text)    { 'All' }
+      let(:name)    { :phase }
+      let(:value)   { :all }
+      let(:options) { { glyphs: %w(some-glyph) } }
+
+      it { should_not include('phase')}
+      it { should_not include('active')}
+      it { should     include('something=else')}
+      it { should     include('<span class="image-glyph some-glyph')}
+
+      context 'is selected' do
+        let(:current_scopes) { {} }
+
+        it { should match(/class=.*active/) }
+      end
+    end
+  end
+
 end
