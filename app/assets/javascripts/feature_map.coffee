@@ -2,7 +2,7 @@
 # Manage the leaflet map and its geoJSON features.
 # Knows how to:
 #   * Set up the leaflet.js map
-#   * Style sites
+#   * Style schools
 #   * Style markers
 #   * Style popups
 #   * Fit to displayed features if requested

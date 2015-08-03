@@ -1,7 +1,7 @@
 #
 # Manage the interactions between the map and the table:
-#  * Highlight sites in the table when selected on the map
-#  * Zoom to sites on the map when clicked in the table
+#  * Highlight schools in the table when selected on the map
+#  * Zoom to schools on the map when clicked in the table
 #
 class @SchoolHighlighter
   constructor: (@featureMap) ->
