@@ -4,22 +4,22 @@ describe School do
   describe '#own_admission_policy?' do
     context 'school has LCC admission policy' do
       let(:school) { School.new(name: 'Some school') }
-      specify { school.should_not be_own_admission_policy }
+      specify { expect(school).not_to be_own_admission_policy }
     end
     context 'school has LCC admission policy' do
       let(:school) { School.new(name: 'Some school (voluntary aided)') }
-      specify { school.should be_own_admission_policy }
+      specify { expect(school).to be_own_admission_policy }
     end
   end
 
   describe '#contended?' do
     context 'no contention' do
       let(:school) { School.new(name: 'Some school', available_places: 99, nearest: nil)}
-      specify { school.should_not be_contended }
+      specify { expect(school).not_to be_contended }
     end
     context 'contention' do
       let(:school) { School.new(name: 'Some school', available_places: 99, nearest: 0.5)}
-      specify { school.should be_contended }
+      specify { expect(school).to be_contended }
     end
   end
 
