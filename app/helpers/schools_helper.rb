@@ -21,6 +21,14 @@ module SchoolsHelper
     RGeo::GeoJSON.encode(RGeo::GeoJSON::EntityFactory.instance.feature(home_lonlat, nil)).to_json.html_safe
   end
 
+  ##
+  #
+  # Makes a bootstrap button as a filter link
+  #
+  # @param options specify +options[:glyphs]+ with an array of glyph names to apply to the button
+  # @return
+  #   markup for a bootstrap button representing a filter, which will be a link
+  #   if the filter is not already selected, and an active (unclickable) button otherwise
   def school_filter_link(text, name, value, options = {})
     raise ArgumentError, 'name must be a symbol' unless name.is_a?(Symbol)
 
@@ -51,6 +59,8 @@ module SchoolsHelper
 
   end
 
+  ##
+  # Return a Bootstrap badge indicating contention at the school
   def contention_badge(school, options = {})
     case
     when school.not_all_nearest
@@ -64,18 +74,29 @@ module SchoolsHelper
     end
   end
 
+  # e.g. long_priority(:priority1a) => 'Priority 1a'
   def long_priority(sym)
     sym.to_s.humanize.sub(/([1-5])/, ' \1')
   end
 
-  def tooltip_priority(sym)
-    I18n.t("priority_popup_help.#{sym}")
-  end
-
+  # e.g. short_priority(:priority1a) => '1a'
   def short_priority(sym)
     long_priority(sym).split(' ').last
   end
 
+  # Help for the given priority, from locales/*.yml
+  def tooltip_priority(sym)
+    I18n.t("priority_popup_help.#{sym}")
+  end
+
+  ##
+  # For a given school and priority attribute, return a string percentage
+  # for use in styling the graph. Return 1% if the resulting value is 0%
+  # (to yield an tiny-height line)
+  #
+  # e.g. priority_height_percent(school, :priority1a) => '14%'
+  # @param school The school to use
+  # @param attr The priority attribute for which to calculate the height
   def priority_height_percent(school, attr)
     return '0%' if school.sum_of_priorities.nil?
 
