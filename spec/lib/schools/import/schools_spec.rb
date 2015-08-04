@@ -29,7 +29,7 @@ describe Schools::Import::Schools do
       example { expect(school.address).to include('Butcher Hill') }
       example { expect(school.available_places).to eql(240) }
       example { expect(school.not_all_nearest).to eql(false) }
-      example { expect(school.centroid).to be_kind_of(RGeo::Geos::CAPIPointImpl) }
+      example { expect(school.centroid).not_to be_nil }
     end
 
     describe 'Not all nearest allocated' do
@@ -40,7 +40,7 @@ describe Schools::Import::Schools do
       example { expect(school.address).to include('Cranmer Rise LS17 5HX') }
       example { expect(school.available_places).to eql(60) }
       example { expect(school.not_all_nearest).to eql(true) }
-      example { expect(school.centroid).to be_kind_of(RGeo::Geos::CAPIPointImpl) }
+      example { expect(school.centroid).not_to be_nil }
     end
   end
 end
