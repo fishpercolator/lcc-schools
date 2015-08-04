@@ -81,7 +81,9 @@ class @FeatureMap
           icon: L.icon({
             iconUrl: '/assets/own-admission-policy.png',
             iconRetinaUrl: '/assets/own-admission-policy2x.png',
-            iconSize: [25, 41]
+            iconSize: [25, 41],
+            iconAnchor:[12, 41],
+            popupAnchor: [1, -35]  # point from which the popup should open relative to the iconAnchor
           })
         }
       )
