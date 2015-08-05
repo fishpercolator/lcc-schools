@@ -15,9 +15,6 @@ class SchoolsController < ApplicationController
   def apply
   end
 
-  def appeal
-  end
-
   def compare
   end
 
