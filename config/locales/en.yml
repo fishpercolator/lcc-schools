@@ -27,3 +27,8 @@ en:
     priority3: 'Child already attending a linked school'
     priority4: 'Nearest school'
     priority5: 'All others choosing a Leeds school not their nearest, in decreasing order of distance'
+  contention:
+    high:    'Not all nearest allocated'
+    medium:  'Oversubscribed'
+    low:     'Availability'
+    unknown: 'Unknown'

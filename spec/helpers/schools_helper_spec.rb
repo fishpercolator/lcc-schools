@@ -30,7 +30,7 @@ describe SchoolsHelper do
 
     context 'oversubscribed' do
       let(:school) { build :school, :oversubscribed }
-      it { should eql '<span class="badge badge-contention-medium ">Oversubscribed</span>'}
+      it { should eql '<span class="badge badge-contention-medium">Oversubscribed</span>'}
 
       context 'with custom class' do
         let(:options) { { class: 'custom-class' } }
@@ -40,17 +40,17 @@ describe SchoolsHelper do
 
     context 'not_all_nearest' do
       let(:school) { build :school, :not_all_nearest }
-      it { should eql '<span class="badge badge-contention-high ">Not all nearest allocated</span>'}
+      it { should eql '<span class="badge badge-contention-high">Not all nearest allocated</span>'}
     end
 
     context 'not_all_nearest' do
       let(:school) { build :school, :not_all_nearest }
-      it { should eql '<span class="badge badge-contention-high ">Not all nearest allocated</span>'}
+      it { should eql '<span class="badge badge-contention-high">Not all nearest allocated</span>'}
     end
 
     context 'own admissions policy' do
       let(:school) { build :school, :own_admissions_policy }
-      it { should eql '<span class="badge badge-contention-unknown ">Unknown</span>'}
+      it { should eql '<span class="badge badge-contention-unknown">Unknown</span>'}
     end
   end
 

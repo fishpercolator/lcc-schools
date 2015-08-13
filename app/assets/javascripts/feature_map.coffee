@@ -17,11 +17,19 @@ class @FeatureMap
   constructor: (@data_feature, @options = DEFAULT_OPTIONS) ->
     @draw()
 
+  contentionBadge = (school) ->
+    """
+      <span class="badge badge-contention-#{school.contention_level}">
+        #{ContentionLevels.getText(school.contention_level)}
+      </span>
+    """
+
   bindPopup = (feature, layer) ->
     school = feature.properties # for readability in the template
     layer.bindPopup("""
       <h3>
         <a href="/schools/#{school.code}">#{school.name}</a>
+        #{contentionBadge(school)}
       </h3>
       <dl>
         <dt>Number of pupils</dt>

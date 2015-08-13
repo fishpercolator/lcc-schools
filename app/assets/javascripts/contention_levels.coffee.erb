@@ -1,0 +1,10 @@
+class @ContentionLevels
+  contention_levels = {
+    "high":    "<%= I18n.t('contention.high') %>",
+    "medium":  "<%= I18n.t('contention.medium') %>",
+    "low":     "<%= I18n.t('contention.low') %>",
+    "unknown": "<%= I18n.t('contention.unknown') %>"
+  }
+
+  @getText = (level) ->
+    contention_levels[level]
