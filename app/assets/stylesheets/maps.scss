@@ -77,13 +77,13 @@ $inner-offset: $base-cluster-size / 8;
 
     a {
       display: inline-block;
-      width: 85%;
+      width: 100%;
       float: left;
+      margin-bottom: 0.3em;
     }
 
-    .score {
-      width: 30px;
-      float: right;
+    .badge {
+      font-size: 80%;
     }
   }
 
@@ -92,6 +92,8 @@ $inner-offset: $base-cluster-size / 8;
     clear: both;
     padding-top: 0.5em;
   }
+
+  overflow: auto;
 }
 
 ul.marker-key {

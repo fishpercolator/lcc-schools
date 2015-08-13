@@ -46,20 +46,21 @@ div.school {
   clear: left;
 
   overflow: auto;
-  dl {
-    padding: $padding-dl-and-reason;
+}
 
-    dt {
-      line-height: 1.5em;
-      font-weight: bold;
-      display: inline-block;
-      clear: left;
-      float: left;
-    }
+dl {
+  padding: $padding-dl-and-reason;
 
-    dd {
-      float: right;
-    }
+  dt {
+    line-height: 1.5em;
+    font-weight: bold;
+    display: inline-block;
+    clear: left;
+    float: left;
+  }
+
+  dd {
+    float: right;
   }
 }
 

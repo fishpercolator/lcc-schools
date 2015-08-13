@@ -12,7 +12,8 @@ module SchoolsHelper
                              number_of_admissions: school.number_of_admissions,
                              nearest: school.nearest,
                              non_nearest: school.non_nearest,
-                             own_admission_policy: school.own_admission_policy?
+                             own_admission_policy: school.own_admission_policy?,
+                             contention_level: contention_level(school)
                            }
                          ))
   end
@@ -59,19 +60,22 @@ module SchoolsHelper
 
   end
 
+  def contention_level(school)
+    case
+    when school.not_all_nearest       then :high
+    when school.contended?            then :medium
+    when school.own_admission_policy? then :unknown
+    else :low
+    end
+  end
+
   ##
   # Return a Bootstrap badge indicating contention at the school
   def contention_badge(school, options = {})
-    case
-    when school.not_all_nearest
-      content_tag :span, 'Not all nearest allocated', class: "badge badge-contention-high #{options[:class]}"
-    when school.contended?
-      content_tag :span, 'Oversubscribed',            class: "badge badge-contention-medium #{options[:class]}"
-    when school.own_admission_policy?
-      content_tag :span, 'Unknown',                   class: "badge badge-contention-unknown #{options[:class]}"
-    else
-      content_tag :span, 'Availability',              class: "badge badge-contention-low #{options[:class]}"
-    end
+    level = contention_level(school)
+    content_tag :span,
+                I18n.t("contention.#{level}"),
+                class: "badge badge-contention-#{level}#{" #{options[:class]}" if options[:class]}"
   end
 
   # e.g. long_priority(:priority1a) => 'Priority 1a'
