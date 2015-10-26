@@ -14,7 +14,9 @@ FactoryGirl.define do
     website 'http://somewhere'
     available_places 30
 
-    centroid 'POINT(-1.47486759802822 53.8426310787134)'
+    centroid {
+      RGeo::Geos.factory(srid: 4326).point(-1.47486759802822, 53.8426310787134)
+    }
 
     factory :primary
     factory :secondary do
