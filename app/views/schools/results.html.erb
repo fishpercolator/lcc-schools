@@ -1,13 +1,12 @@
 <%= content_for :head do %>
   <link rel="alternate"
         type="application/vnd.geo+json"
-        href="<%= schools_results_path(format: :geojson) %>">
+        href="<%= schools_results_path(params.slice(:address)).sub(/results(\?)?/, 'results.geojson\1') %>">
 <% end %>
 
 <h1>Your results</h1>
 
-<h4>Schools close to 71 Red Hall Lane, Leeds LS17 8NA</h4>
-<small><em>(this is limited to one place in the demo!)</em></small>
+<h4>Schools close to <%= @address %></h4>
 
 <div id="map"></div>
 <%= render 'marker_key' %>

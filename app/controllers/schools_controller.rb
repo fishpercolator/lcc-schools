@@ -13,17 +13,16 @@ class SchoolsController < ApplicationController
   has_scope :phase
 
   def apply
+    @address = Address.new
   end
 
   def compare
   end
 
-  def home_point
-    [-1.4715568, 53.840504]
-  end
-
   def results
-    @home = RGeo::Geographic.spherical_factory.point(*home_point)
+    @address = Address.lookup(address_params[:postcode], address_params[:name_or_number])
+    @home    = RGeo::Geographic.spherical_factory.point(@address.longitude, @address.latitude)
+
     community_schools = School.community.where(phase: 'Primary').nearest_to(@home).limit(5)
     own_admission_policy_schools =
       School.own_admissions_policy.where(phase: 'Primary').nearest_to(@home).limit(5)
@@ -32,9 +31,7 @@ class SchoolsController < ApplicationController
 
     respond_to do |format|
       format.html    { render }
-      format.geojson {
-        render geojson: @schools
-      }
+      format.geojson { render geojson: @schools }
     end
   end
 
@@ -54,5 +51,10 @@ class SchoolsController < ApplicationController
       format.html    { render }
       format.geojson { render geojson: @school }
     end
+  end
+
+private
+  def address_params
+    params.require(:address).permit(:postcode, :name_or_number)
   end
 end

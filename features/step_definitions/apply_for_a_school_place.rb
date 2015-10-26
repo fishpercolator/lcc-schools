@@ -4,9 +4,9 @@ end
 
 And(/^I enter a valid postcode and house number$/) do
   fill_in 'Postcode', with: 'LS8 1JN'
-  fill_in 'House name or number', with: '30'
+  fill_in 'Name or number', with: '30'
 
-  click_link 'Which schools could I apply to?'
+  click_button 'Which schools could I apply to?'
 end
 
 Then(/^I should see a map with my home and my five nearest community schools$/) do

@@ -9,7 +9,7 @@ end
 
 And(/^I should see a list of all the schools with coloured badges indicating whether they were oversubscribed$/) do
   within 'table.schools' do
-    expect(page).to have_selector('.badge-contention-low', count: 2)
+    expect(page).to have_selector('.badge-contention-low', count: 5 )
     expect(page).to have_selector('.badge-contention-medium', count: 1)
     expect(page).to have_selector('.badge-contention-high', count: 1)
     expect(page).to have_selector('.badge-contention-unknown', count: 1)
