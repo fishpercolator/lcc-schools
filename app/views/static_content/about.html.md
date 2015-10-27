@@ -1,7 +1,7 @@
 # About
 
 This demo was put together for the Leeds City Council Schools Admissions Innovation Lab held on 29th June 2015. It's
-a slightly fleshed-out version of the app presented (with these 
+a fleshed-out version of the app presented (with these 
 [slides](https://raw.githubusercontent.com/rgarner/lcc-schools/master/docs/School-Admissions.pdf)) on that day.
 
 ## Usage notes
@@ -23,9 +23,7 @@ when not all children for whom the school was their nearest were given a place.
 
 * No shapefiles are available for historical school cutoff boundaries. This app only has circles to represent
   nearest and non-nearest admissions. A real app would combine the circles and cut-off areas.
-* The "apply for a school place" flow is limited to one location - primarily because the price of a geocoder is 
-  prohibitive for a demo (though we could use just postcodes). 
-    * You get five nearest community schools and five voluntary. This needs some tweaking!
+* In the "apply for a school place" section, You get five nearest community schools and five voluntary. This needs some tweaking!
 * The "layers" button isn't doing the hard work to make it simple! It's doing what was simplest on the day. 
   It does cater for the more engaged parents, but it's hiding immediately useful information. We can present that more effectively.
 * No facilities, or filters for facilities (e.g. Breakfast club/cycle storage) are available.
