@@ -2,18 +2,10 @@
 
 <h2>Where do you live?</h2>
 
-<form>
-  <div class="form-group">
-    <label for="postcode">Postcode</label>
-    <input type="text" class="form-control" id="postcode" placeholder="Postcode">
-  </div>
-  <div class="form-group">
-    <label for="house_number_name">House name or number</label>
-    <input type="text" class="form-control" id="house_number_name" placeholder="House name or number">
-  </div>
+<%= bootstrap_form_for(@address, method: 'get', url: schools_results_path) do |f| %>
+  <%= f.search_field :postcode, placeholder: 'Full UK postcode, e.g. LS8 1JU' %>
+  <%= f.search_field :name_or_number, placeholder: 'House name or number, e.g. 10' %>
 
-  <div class="control-group">
-    <%= link_to 'Which schools could I apply to?', schools_results_path, class: 'btn btn-primary pull-right' %>
-  </div>
-</form>
+  <%= f.primary 'Which schools could I apply to?', name: nil %>
+<% end %>
 
