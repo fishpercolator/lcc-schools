@@ -8,7 +8,10 @@ RSpec.describe Address, type: :model do
   end
 
   describe '.lookup' do
-    subject(:address) { Address.lookup('LS8 1JU', '30') }
+    let(:postcode) { 'LS8 1JU' }
+    let(:number)   { '30' }
+
+    subject(:address) { Address.lookup(postcode, number) }
 
     GEOCODER_LATITUDE  = 53.0
     GEOCODER_LONGITUDE = -1.2
@@ -48,6 +51,56 @@ RSpec.describe Address, type: :model do
         it 'populates lat/long from the geocoder' do
           expect(address.latitude).to eql(GEOCODER_LATITUDE)
           expect(address.longitude).to eql(GEOCODER_LONGITUDE)
+        end
+      end
+    end
+
+    context 'The postcode needs normalising' do
+      let(:postcode) { 'LS8   1JU   ' }
+
+      it 'normalises the postcode' do
+        expect(address.postcode).to eql('LS8 1JU')
+      end
+    end
+
+    context 'postcode is bad' do
+      context 'not a postcode' do
+        let(:postcode) { 'WRONG' }
+
+        it { should_not be_valid }
+
+        it 'should not have any positional values' do
+          expect(address.latitude).to be_nil
+          expect(address.longitude).to be_nil
+        end
+
+        it 'should have an error on the postcode field' do
+          expect(address.errors[:postcode].first).to eql('not recognised as a UK postcode')
+        end
+      end
+
+      context 'blank postcode' do
+        let(:postcode) { '' }
+
+        it { should_not be_valid }
+
+        it 'should not have any positional values' do
+          expect(address.latitude).to be_nil
+          expect(address.longitude).to be_nil
+        end
+
+        it 'should have an error on the postcode field' do
+          expect(address.errors[:postcode].first).to eql("can't be blank")
+        end
+      end
+
+      context 'not a full postcode' do
+        let(:postcode) { 'LS1' }
+
+        it { should_not be_valid }
+
+        it 'should have an error on the postcode field' do
+          expect(address.errors[:postcode].first).to eql('must be a full UK postcode')
         end
       end
     end

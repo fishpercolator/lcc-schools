@@ -21,7 +21,11 @@ class SchoolsController < ApplicationController
 
   def results
     @address = Address.lookup(address_params[:postcode], address_params[:name_or_number])
-    @home    = RGeo::Geographic.spherical_factory.point(@address.longitude, @address.latitude)
+    unless @address.valid?
+      render 'apply' and return
+    end
+
+    @home = RGeo::Geographic.spherical_factory.point(@address.longitude, @address.latitude)
 
     community_schools = School.community.where(phase: 'Primary').nearest_to(@home).limit(5)
     own_admission_policy_schools =
