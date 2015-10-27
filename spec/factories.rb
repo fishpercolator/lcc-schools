@@ -15,7 +15,7 @@ FactoryGirl.define do
     available_places 30
 
     centroid {
-      RGeo::Geos.factory(srid: 4326).point(-1.47486759802822, 53.8426310787134)
+      RGeo::Geographic.spherical_factory(srid: 4326).point(-1.47486759802822, 53.8426310787134)
     }
 
     factory :primary
