@@ -26,6 +26,7 @@ gem 'rgeo-geojson', git: 'https://github.com/rgarner/rgeo-geojson.git', branch: 
 gem 'pg_search'
 gem 'oj'
 gem 'puma'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'launchy'
