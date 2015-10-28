@@ -10,6 +10,18 @@ describe School do
       let(:school) { School.new(name: 'Some school (voluntary aided)') }
       specify { expect(school).to be_own_admission_policy }
     end
+    context 'school has LCC admission policy' do
+      let(:school) { School.new(name: 'Some school (foundation)') }
+      specify { expect(school).to be_own_admission_policy }
+    end
+    context 'school has LCC admission policy' do
+      let(:school) { School.new(name: 'Some school (academy)') }
+      specify { expect(school).to be_own_admission_policy }
+    end
+    context 'school has LCC admission policy' do
+      let(:school) { School.new(name: 'Khalsa Science Academy Free School') }
+      specify { expect(school).to be_own_admission_policy }
+    end
   end
 
   describe '#contended?' do

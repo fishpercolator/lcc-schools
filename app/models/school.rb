@@ -19,11 +19,11 @@ class School < ActiveRecord::Base
   }
 
   scope :community, -> {
-    where("schools.name !~* 'voluntary'")
+    where("schools.name !~* 'voluntary|foundation|academy'")
   }
 
   scope :own_admissions_policy, -> {
-    where("schools.name ~* 'voluntary'")
+    where("schools.name ~* 'voluntary|foundation|academy'")
   }
 
   def address
@@ -35,7 +35,7 @@ class School < ActiveRecord::Base
   end
 
   def own_admission_policy?
-    !!(name =~ /voluntary/i)
+    !!(name =~ /voluntary|foundation|academy/i)
   end
 
   def to_param
