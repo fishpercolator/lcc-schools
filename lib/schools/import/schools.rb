@@ -7,11 +7,12 @@ module Schools
       ALLOCATED_NUMBERS = %r{([0-9]+)/([0-9]+)}
 
       def run!
-        CSV.read(filename, headers: true).each do |row|
+        CSV.read(filename, headers: true,  encoding: 'windows-1251:utf-8').each do |row|
           School.find_or_create_by!(code: row['SchoolCode']) do |school|
             school.code = row['SchoolCode']
             school.name = row['School']
             school.phase = row['Phase']
+            school.type = row['Type']
             school.address1 = row['AddressLine1']
             school.address2 = row['AddressLine2']
             school.address3 = row['AddressLine3']
