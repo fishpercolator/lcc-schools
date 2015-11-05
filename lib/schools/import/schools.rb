@@ -8,8 +8,8 @@ module Schools
 
       def run!
         CSV.read(filename, headers: true,  encoding: 'windows-1251:utf-8').each do |row|
-          School.find_or_create_by!(code: row['SchoolCode']) do |school|
-            school.code = row['SchoolCode']
+          School.where(code: row['SchoolCode']).first_or_initialize.tap do |school|
+            school.code ||= row['SchoolCode']
             school.name = row['School']
             school.phase = row['Phase']
             school.type = row['Type']
@@ -42,6 +42,8 @@ module Schools
             else
               school.number_of_admissions = school.sum_of_priorities
             end
+
+            school.save!
           end
           next if row['X_REF'] == '#N/A'
 

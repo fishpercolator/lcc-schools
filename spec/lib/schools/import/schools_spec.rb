@@ -44,5 +44,14 @@ describe Schools::Import::Schools do
       example { expect(school.not_all_nearest).to eql(true) }
       example { expect(school.centroid).not_to be_nil }
     end
+
+    describe 'an idempotent second import' do
+      subject(:school) { School.find_by(code: '5400') }
+
+      it 'updates changed records' do
+        Schools::Import::Schools.new('spec/fixtures/import/schools2.csv').run!
+        expect(school.name).to eql('Academy Name Changed')
+      end
+    end
   end
 end
