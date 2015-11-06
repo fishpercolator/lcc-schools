@@ -3,8 +3,8 @@
 <h2>Where do you live?</h2>
 
 <%= bootstrap_form_for(@address, method: 'get', url: schools_results_path) do |f| %>
-  <%= f.search_field :postcode, placeholder: 'Full UK postcode, e.g. LS8 1JU' %>
-  <%= f.search_field :name_or_number, placeholder: 'House name or number, e.g. 10' %>
+  <%= f.search_field :postcode, placeholder: 'e.g. LS8 1JU' %>
+  <%= f.search_field :name_or_number, placeholder: 'e.g. 10' %>
 
   <%= f.primary 'Which schools could I apply to?', name: nil %>
 <% end %>

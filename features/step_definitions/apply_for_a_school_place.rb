@@ -3,8 +3,8 @@ When(/^I visit the apply schools page$/) do
 end
 
 And(/^I enter a valid postcode and house number$/) do
-  fill_in 'Postcode', with: 'LS8 1JN'
-  fill_in 'Name or number', with: '30'
+  fill_in 'Full UK postcode', with: 'LS8 1JN'
+  fill_in 'House name or number', with: '30'
 
   click_button 'Which schools could I apply to?'
 end
