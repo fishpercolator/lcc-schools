@@ -1,4 +1,6 @@
 class School < ActiveRecord::Base
+  self.inheritance_column = :unused
+
   include PgSearch
   pg_search_scope :containing_text, against: {
     code: 'A',
@@ -19,11 +21,11 @@ class School < ActiveRecord::Base
   }
 
   scope :community, -> {
-    where("schools.name !~* 'voluntary|foundation|academy'")
+    where(type: 'Community')
   }
 
   scope :own_admissions_policy, -> {
-    where("schools.name ~* 'voluntary|foundation|academy'")
+    where.not(type: 'Community')
   }
 
   def address
@@ -31,11 +33,11 @@ class School < ActiveRecord::Base
   end
 
   def community_admission_policy?
-    !own_admission_policy?
+    type == 'Community'
   end
 
   def own_admission_policy?
-    !!(name =~ /voluntary|foundation|academy/i)
+    !community_admission_policy?
   end
 
   def to_param

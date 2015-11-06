@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026082244) do
+ActiveRecord::Schema.define(version: 20151105161053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20151026082244) do
     t.integer  "from_age"
     t.integer  "to_age"
     t.boolean  "not_all_nearest"
+    t.string   "type"
   end
 
   add_index "schools", ["centroid"], name: "index_schools_on_centroid", using: :gist

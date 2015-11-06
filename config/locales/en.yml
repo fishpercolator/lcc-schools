@@ -32,3 +32,8 @@ en:
     medium:  'Oversubscribed'
     low:     'Availability'
     unknown: 'Unknown'
+  helpers:
+    label:
+      address:
+        postcode: 'Full UK postcode'
+        name_or_number: 'House name or number'

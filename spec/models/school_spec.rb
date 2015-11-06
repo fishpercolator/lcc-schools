@@ -3,23 +3,23 @@ require 'rails_helper'
 describe School do
   describe '#own_admission_policy?' do
     context 'school has LCC admission policy' do
-      let(:school) { School.new(name: 'Some school') }
+      let(:school) { School.new(name: 'Some school', type: 'Community') }
       specify { expect(school).not_to be_own_admission_policy }
     end
     context 'school has LCC admission policy' do
-      let(:school) { School.new(name: 'Some school (voluntary aided)') }
+      let(:school) { School.new(name: 'Some school', type: 'Voluntary Aided') }
       specify { expect(school).to be_own_admission_policy }
     end
     context 'school has LCC admission policy' do
-      let(:school) { School.new(name: 'Some school (foundation)') }
+      let(:school) { School.new(name: 'Some school', type: 'Foundation') }
       specify { expect(school).to be_own_admission_policy }
     end
     context 'school has LCC admission policy' do
-      let(:school) { School.new(name: 'Some school (academy)') }
+      let(:school) { School.new(name: 'Some school', type: 'Academy') }
       specify { expect(school).to be_own_admission_policy }
     end
     context 'school has LCC admission policy' do
-      let(:school) { School.new(name: 'Khalsa Science Academy Free School') }
+      let(:school) { School.new(name: 'Khalsa Science Academy Free School', type: 'Academy') }
       specify { expect(school).to be_own_admission_policy }
     end
   end

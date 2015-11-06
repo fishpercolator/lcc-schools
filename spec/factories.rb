@@ -6,6 +6,7 @@ FactoryGirl.define do
   factory :school do
     code
     phase 'Primary'
+    type 'Community'
     name 'Schoolton school'
     headteacher 'Mr. Head'
     address1 'School street'
@@ -48,6 +49,7 @@ FactoryGirl.define do
 
     trait :own_admissions_policy do
       name 'Schoolton school (Voluntary aided)'
+      type 'Voluntary Aided'
     end
   end
 end

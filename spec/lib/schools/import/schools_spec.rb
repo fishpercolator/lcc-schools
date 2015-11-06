@@ -26,6 +26,7 @@ describe Schools::Import::Schools do
 
       example { expect(school.name).to eql('Abbey Grange Church of England Academy') }
       example { expect(school.phase).to eql('Secondary') }
+      example { expect(school.type).to eql('Voluntary Aided') }
       example { expect(school.address).to include('Butcher Hill') }
       example { expect(school.available_places).to eql(240) }
       example { expect(school.not_all_nearest).to eql(false) }
@@ -37,10 +38,20 @@ describe Schools::Import::Schools do
 
       example { expect(school.name).to eql('Alwoodley Primary School') }
       example { expect(school.phase).to eql('Primary') }
+      example { expect(school.type).to eql('Community') }
       example { expect(school.address).to include('Cranmer Rise LS17 5HX') }
       example { expect(school.available_places).to eql(60) }
       example { expect(school.not_all_nearest).to eql(true) }
       example { expect(school.centroid).not_to be_nil }
+    end
+
+    describe 'an idempotent second import' do
+      subject(:school) { School.find_by(code: '5400') }
+
+      it 'updates changed records' do
+        Schools::Import::Schools.new('spec/fixtures/import/schools2.csv').run!
+        expect(school.name).to eql('Academy Name Changed')
+      end
     end
   end
 end
