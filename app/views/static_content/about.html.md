@@ -10,7 +10,7 @@ a fleshed-out version of the app presented (with these
 * Use the crosshairs left of each school in a table to centre that school on the map
 * In the schools list page, there's a full text search. It indexes common text fields, including postcode, so you can,
   for example, link to [all the primary schools in LS17](/schools?containing_text=LS17&phase=primary), or the 
-  [only three secondary schools in Leeds](/schools?phase=secondary&admissions_policy=own_admissions_policy) with their own admission policy.
+  [thirty-three secondary schools in Leeds](/schools?phase=secondary&admissions_policy=own_admissions_policy) with their own admission policy.
   
 ### The traffic light system
 
