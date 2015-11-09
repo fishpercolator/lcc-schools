@@ -1,9 +1,9 @@
 <dl class="admissions-graph">
-  <% School.priorities.each do |attr| %>
+  <% School.priorities.each_with_index do |attr, index| %>
     <dt><%= long_priority(attr) %></dt>
     <dd>
       <label>
-        <a data-toggle="popover" data-trigger="focus"
+        <a tabindex="<%= index %>" data-toggle="popover" data-trigger="focus"
            data-placement="bottom" data-content="<%= tooltip_priority(attr) %>"
            href="#" title="<%= long_priority(attr) %>"
         >
