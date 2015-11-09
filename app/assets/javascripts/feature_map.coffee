@@ -145,8 +145,8 @@ class @FeatureMap
 
     overlays = {
       "Show schools": @featureLayer,
-      "Who got in when it was their nearest school?":    @nearestGroup,
-      "Who got in when it wasn't their nearest school?": @nonNearestGroup
+      "In 2015, Who got in when it was their nearest school?":    @nearestGroup,
+      "In 2015, Who got in when it wasn't their nearest school?": @nonNearestGroup
     }
 
     L.control.layers(null, overlays).addTo(@map)

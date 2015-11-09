@@ -4,6 +4,8 @@ This demo was put together for the Leeds City Council Schools Admissions Innovat
 a fleshed-out version of the app presented (with these 
 [slides](https://raw.githubusercontent.com/rgarner/lcc-schools/master/docs/School-Admissions.pdf)) on that day.
 
+It is based **solely** on 2015 admissions data.
+
 ## Usage notes
 
 * Use the "layers" button on the top right of maps to see nearest and non-nearest circles (in blue and red, respectively). 
