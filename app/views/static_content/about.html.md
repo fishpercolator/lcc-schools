@@ -4,7 +4,8 @@ This demo was put together for the Leeds City Council Schools Admissions Innovat
 a fleshed-out version of the app presented (with these 
 [slides](https://raw.githubusercontent.com/rgarner/lcc-schools/master/docs/School-Admissions.pdf)) on that day.
 
-It is based **solely** on 2015 admissions data.
+It is based **solely** on 2015 admissions data. The application portion is only for primary schools, as
+secondary school applications were identified as much less problematic on the day.
 
 ## Usage notes
 
