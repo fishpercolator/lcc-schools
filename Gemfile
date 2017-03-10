@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+ruby '2.3.3'
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'rails', '~> 4.2.0'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -23,7 +25,7 @@ gem 'activerecord-postgis-adapter', '3.0.0.beta2'
 gem 'geocoder'
 gem 'uk_postcode'
 gem 'bootstrap_form'
-gem 'rgeo-geojson', git: 'https://github.com/rgarner/rgeo-geojson.git', branch: 'allow-encoding-of-null-geometry'
+gem 'rgeo-geojson'
 gem 'pg_search'
 gem 'oj'
 gem 'puma'

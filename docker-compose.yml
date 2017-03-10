@@ -1,0 +1,25 @@
+db:
+  image: mdillon/postgis
+  ports:
+    - "5432"
+web:
+  build: .
+  entrypoint:
+    - env
+    - --unset=RAILS_ENV
+  command: bundle exec puma -C config/puma.rb
+  volumes:
+    - .:/usr/src/lcc-schools
+  volumes_from:
+    - bundle
+  ports:
+    - "3000:3000"
+  links:
+    - db
+  user: '1001'
+bundle:
+  image: lccschools_web
+  command: echo Done
+  volumes:
+    - /bundle
+

@@ -59,6 +59,4 @@ ActiveRecord::Schema.define(version: 20151105161053) do
     t.string   "type"
   end
 
-  add_index "schools", ["centroid"], name: "index_schools_on_centroid", using: :gist
-
 end
